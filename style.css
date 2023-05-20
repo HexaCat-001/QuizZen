@@ -9,4 +9,43 @@ html,body {
     font-size: 10px;
     width: 100%;
     height: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif';
+}
+
+:root {
+    --font-size-nav : 1.8rem;
+    --background-color-nav : rgb(50, 50, 50);
+    --text-color-nav : aliceblue;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-nav);
+    align-items: center;
+    background-color: var(--background-color-nav);
+    height: 50px;
+    position: sticky;
+    color: var(--text-color-nav);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-icon {
+    padding: 0 8px;
+    text-decoration: none;
+    color: var(--text-color-nav);
+    cursor: pointer;
+}
+
+.logo {
+    font-weight:900;
+    font-size: 2.7rem;
+}
+
+nav input {
+    display: none;
 }
