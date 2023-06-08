@@ -9,7 +9,7 @@ html,body {
     font-size: 10px;
     width: 100%;
     height: 100%;
-    background-color: #96cdf8;
+    background-color: var(--primary-color);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -29,6 +29,7 @@ html,body {
     --font-size-nav : 1.8rem;
     --background-color-nav : rgb(50, 50, 50);
     --text-color-nav : aliceblue;
+    --primary-color : #96cdf8;
 }
 
 /* Nav-Bar */
@@ -70,6 +71,7 @@ nav input {
     height: 101vh;
     display: grid;
     place-items: center;
+    margin-top: -5rem;
 }
 
 .inner-div {
@@ -151,4 +153,121 @@ input, .inner-div li label  {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.main-container {
+    width: 100%;
+    height: 100%;;
+    margin-top: -10.5rem;
+    background-color: var(--primary-color);
+}
+
+.circle-container {
+    width: 40rem;
+    height: 40rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+    position: absolute;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
+}
+
+.semicircle {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: right center;
+}
+
+.semicircle:nth-child(1) {
+    background-color: #d63429;
+    z-index: 2;
+}
+
+.semicircle:nth-child(2) {
+    background-color: #0984e3;
+    z-index: 3;
+}
+
+.semicircle:nth-child(3) {
+    background-color: #ffffff;
+    z-index: 4;
+}
+
+.outermost-circle {
+    width: 38.5rem;
+    height: 38.5rem;
+    border-radius: 50%;
+    background-color: #2d3436;
+    z-index: 5;
+}
+
+/* hover for testing */
+/* .main-container:hover .semicircle:nth-child(1) {
+    transform: rotate(180deg);
+    transition: 1s linear;
+}
+
+.main-container:hover .semicircle:nth-child(2) {
+    transform: rotate(360deg);
+    transition: 2s linear;
+}
+
+.main-container:hover .semicircle:nth-child(3) {
+    opacity: 0;
+    transition: opacity 0s 1s;
+} */
+
+.timer-container {
+    width: 33rem;
+    height: 20rem;
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer {
+    width: 40rem;
+    height: 10rem;
+    color: #ffffff;
+    z-index: 7;
+}
+
+.text {
+    width: 38rem;
+    height: 10rem;
+    z-index: 7;
+}
+
+.timer div {
+    font-size: 7rem;
+    font-weight: 100;
+    width: 8rem;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem 0 1rem;
+}
+
+.timer .colon {
+    background-color: transparent;
+    width: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 1.5rem;
+}
+
+.text {
+    width: 40rem;
+    height: 10rem;
+    color: #ffffff;
+    z-index: 7;
+    font-size: 2.5rem;
+    margin: 0 1rem 0 1rem;
 }

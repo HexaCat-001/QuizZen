@@ -107,5 +107,79 @@ submit.addEventListener('click', () => {
 
 
 // ----- TIMER -----
+// veriables
+const semicircles = document.querySelectorAll('.semicircle');
+const timer = document.querySelector('.timer');
+const text = document.querySelector('.text');
 
+// input(give allocated time)
+const hr = 0;
+const min = 0;
+const sec = 10;
+
+const hours = hr * 36000000;
+const minutes = min * 60000;
+const seconds = sec * 1000;
+const setTime = hours + minutes + seconds; // total allocated time in miliseconds
+const startTime = Date.now(); // The Date.now() static method returns the number of milliseconds elapsed since the epoch, which is defined as the midnight at the beginning of January 1, 1970, UTC.
+const futureTime = startTime + setTime; // present miliseconds + total allocated miliseconds
+
+// loop
+const timerLoop = setInterval(countDownTimer,0)
+
+
+function countDownTimer() {
+    const currentTime = Date.now(); // The Date.now() static method returns the number of milliseconds elapsed since the epoch, which is defined as the midnight at the beginning of January 1, 1970, UTC.
+    const remainingTime = futureTime - currentTime;
+    angle = (remainingTime/setTime) * 360; // angle will go down, 360-359-358-357...-180-...0 means rotate anticlockwise
+
+    // progress indicator
+    if(angle > 180) {
+        semicircles[2].style.display = 'none'; // invisiable (white-part)
+        semicircles[0].style.transform = 'rotate(180deg)';
+        semicircles[1].style.transform = `rotate(${angle}deg)`; // rotate 360' to 180' (blue-part)
+    } // first half rotation
+    else{
+        semicircles[2].style.display = 'block'; // visiable on left side (white-part)
+        semicircles[0].style.transform = `rotate(${angle}deg)`; // rotate 180' to 0' (red-part)
+        semicircles[1].style.transform = `rotate(${angle}deg)`; // rotate 180' to 0' (blue-part)
+    } // second half rotation (angle < 180)
+
+
+    // timer
+    const hrs = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
+    const min = Math.floor((remainingTime / (1000 * 60)) % 60);
+    const sec = Math.floor((remainingTime / 1000) % 60);
+
+    timer.innerHTML = `
+    <div>${hrs}</div>
+    <div class="colon">:</div>
+    <div>${min}</div>
+    <div class="colon">:</div>
+    <div>${sec}</div>
+    `
+    text.style.display = 'none';
+
+    // 5sec-condition
+
+
+    // end
+    if(remainingTime < 0) {
+        clearInterval(timerLoop); // stop setInterval() / progress bar
+        semicircles[0].style.display = 'none'; 
+        semicircles[1].style.display = 'none';
+        semicircles[2].style.display = 'none';
+    
+        timer.innerHTML = `
+        <div>00</div>
+        <div class="colon">:</div>
+        <div>00</div>
+        <div class="colon">:</div>
+        <div>00</div>
+        `
+        text.style.display = 'flex';
+        text.innerHTML = `<h2>Time Up Buddy!</h2>`;
+    }
+
+}
 
