@@ -104,3 +104,8 @@ submit.addEventListener('click', () => {
 
 });
 
+
+
+// ----- TIMER -----
+
+
