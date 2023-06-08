@@ -81,33 +81,37 @@ const deselectAll = () => {
 }
 
 // after clicking submit button followed things will happen
-submit.addEventListener('click', () => {
-    const checkedAnswer = getCheckAnswer();
-    if(checkedAnswer === quizDB[questionCount].ans){
-        score++;
-    }
-
-    questionCount++;
-
-    deselectAll();
-
-    if(questionCount < quizDB.length){
-        loadQuestion();
-    }else{
-        showScore.innerHTML = `
-        <h3> You Scored: ${score}/${quizDB.length} <h3>
-        <button class="btn" onclick="location.reload()">Play Again</button>
-        `;
-        // location.reload() is an inbuild function to reload pages..
-        showScore.classList.remove('score-area');
-    }
-
+    submit.addEventListener('click', function submittion() {
+        const checkedAnswer = getCheckAnswer();
+        if(checkedAnswer === quizDB[questionCount].ans){
+            score++;
+        }
+    
+        questionCount++;
+    
+        deselectAll();
+    
+        if(questionCount < quizDB.length){
+            loadQuestion();
+        }else{
+            showScore.innerHTML = `
+            <h3> You Scored: ${score}/${quizDB.length} <h3>
+            <button class="btn" onclick="location.reload()">Play Again</button>
+            `;
+            // location.reload() is an inbuild function to reload pages..
+            showScore.classList.remove('score-area');
+            
+        }
 });
+
+
 
 
 
 // ----- TIMER -----
 // veriables
+const quizz = document.querySelector('.quizz');
+const mainContainer = document.querySelector('.main-container');
 const semicircles = document.querySelectorAll('.semicircle');
 const timer = document.querySelector('.timer');
 const text = document.querySelector('.text');
@@ -179,6 +183,14 @@ function countDownTimer() {
         `
         text.style.display = 'flex';
         text.innerHTML = `<h2>Time Up Buddy!</h2>`;
+
+        // submit the quizz by pressing submit button
+        for(let i=0; i<=quizDB.length+1 ; i++) {
+            submit.click();
+        }
+        
+        mainContainer.style.margin = '14rem';
+        quizz.style.margin = '5rem';
     }
 
 }
