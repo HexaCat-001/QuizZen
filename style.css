@@ -58,6 +58,7 @@ html,body {
     background-color: var(--background-color-nav);
     height: 89px;
     position: sticky;
+    padding-left: 2.5rem;
     color: var(--text-color-nav);
     animation: nav-bar-opening 0.9s;
 }
@@ -89,7 +90,7 @@ nav input {
     height: 50vh;
     display: grid;
     place-items: center;
-    margin: 5rem;
+    padding: 5rem;
     background-color: rgb(255, 255, 255);
     border-radius: 1rem;
     transition: ease-in-out 0.3s;
@@ -125,10 +126,21 @@ input, .inner-div li label  {
     display: none;
 }
 
+#slBox {
+    display: flex;
+    flex-wrap: wrap;
+    width: 20rem;
+}
+
+#slBox ul {
+    list-style: none;
+    display: inline-block;
+}
+
 #slNumbers {
     padding: 0.6rem;
     font-size: 1.5rem;
-    margin: 0.5rem;
+    margin: 0.8rem;
     background-color: #dddefc;
     border: none;
     outline: none;
@@ -280,5 +292,6 @@ input, .inner-div li label  {
     padding-top: 2rem;
     color: #fff;
     font-size: medium;
+    text-align: center;
     animation: left-sidebar-opening 1s;
 }

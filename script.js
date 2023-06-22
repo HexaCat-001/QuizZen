@@ -51,14 +51,15 @@ const showScore = document.querySelector('#showScore');
 let slNo = 0;
 const loadSLNumbers = () => {
     for(let i=0; i<quizDB.length; i++) {
-        sl++;
-        const para = document.createElement("p");
-        const para = document.createElement("p");
-        const node = document.createTextNode("This is new.");
-        para.appendChild(node);
-
-        const element = document.getElementById("div1");
-        element.appendChild(para);      
+        // sl++;
+        // // const para = document.createElement("p"); element.appendChild()
+        // // const node = document.createTextNode("This is new.");
+        // // para.appendChild(node);
+        // // const element = document.getElementById("div1");
+        // // element.appendChild(para); 
+        // let box = document.createElement("button");
+        // box.innerHTML = `${sl}`;         // Create text with DOM
+        // $("div.left-sidebar").append(box1, box2, box3);   // Append new elements     
     }
 
 }
@@ -212,10 +213,11 @@ function countDownTimer() {
         <div class="colon">:</div>
         <div>00</div>
         `
-
+         
         // submit the quizz by pressing submit button
         for(let i=0; i<=quizDB.length+1 ; i++) {
             submit.click();
+            back.style.display = 'none';
         }
         quizz.style.margin = '5rem';
     }
