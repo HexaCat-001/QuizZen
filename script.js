@@ -40,15 +40,37 @@ const option2 = document.querySelector('#option2');
 const option3 = document.querySelector('#option3');
 const option4 = document.querySelector('#option4');
 const submit = document.querySelector('#submit');
+const mfr = document.querySelector('#mfr');
+const back = document.querySelector('#back');
+const slNumbers = document.querySelector('#slNumbers');
 const answers = document.querySelectorAll('.answer');
 const showScore = document.querySelector('#showScore');
+
+
+// number of questions = number of sl numbers, questionlist = slList
+let slNo = 0;
+const loadSLNumbers = () => {
+    for(let i=0; i<quizDB.length; i++) {
+        sl++;
+        const para = document.createElement("p");
+        const para = document.createElement("p");
+        const node = document.createTextNode("This is new.");
+        para.appendChild(node);
+
+        const element = document.getElementById("div1");
+        element.appendChild(para);      
+    }
+
+}
+// function calling
+loadSLNumbers();
+
 
 // Start 2 iterators, one for quizDB array another for score
 let questionCount = 0;
 let score = 0;
 
 // This function is for load next Question & Options 
-//todo[make same thing for back option]
 const loadQuestion = () => {
     const questionList = quizDB[questionCount]
 
@@ -58,9 +80,11 @@ const loadQuestion = () => {
     option2.innerText = questionList.b;
     option3.innerText = questionList.c;
     option4.innerText = questionList.d;
+    // back.style.display = 'none'; 
 }
 // function calling
 loadQuestion();
+
 
 // this function for get the checked answer's id
 const getCheckAnswer = () => {
@@ -82,6 +106,9 @@ const deselectAll = () => {
 
 // after clicking submit button followed things will happen
     submit.addEventListener('click', function submittion() {
+        back.style.display = 'block';
+        slNumbers.style.background = 'green';
+        slNumbers.style.color = 'white';
         const checkedAnswer = getCheckAnswer();
         if(checkedAnswer === quizDB[questionCount].ans){
             score++;
@@ -100,9 +127,30 @@ const deselectAll = () => {
             `;
             // location.reload() is an inbuild function to reload pages..
             showScore.classList.remove('score-area');
-            
+            back.style.display = 'none';
+            submit.style.display = 'none';
+            mfr.style.display = 'none';
+            clearInterval(timerLoop);
         }
-});
+    });
+
+    back.addEventListener('click', ()=>{
+    const checkedAnswer = getCheckAnswer();
+    if(checkedAnswer === quizDB[questionCount].ans){
+        score++;
+    }
+
+    questionCount--;
+
+    deselectAll();
+
+    if(questionCount < quizDB.length){
+        loadQuestion();
+    }
+    if(questionCount < 1){
+        back.style.display = 'none'; 
+    }
+    })
 
 
 
@@ -112,14 +160,13 @@ const deselectAll = () => {
 // veriables
 const quizz = document.querySelector('.quizz');
 const mainContainer = document.querySelector('.main-container');
-const semicircles = document.querySelectorAll('.semicircle');
 const timer = document.querySelector('.timer');
 const text = document.querySelector('.text');
 
-// input(give allocated time)
+// todo -> input(give allocated time)
 const hr = 0;
 const min = 0;
-const sec = 10;
+const sec = 20;
 
 const hours = hr * 36000000;
 const minutes = min * 60000;
@@ -135,7 +182,6 @@ const timerLoop = setInterval(countDownTimer,0)
 function countDownTimer() {
     const currentTime = Date.now(); // The Date.now() static method returns the number of milliseconds elapsed since the epoch, which is defined as the midnight at the beginning of January 1, 1970, UTC.
     const remainingTime = futureTime - currentTime;
-    angle = (remainingTime/setTime) * 360; // angle will go down, 360-359-358-357...-180-...0 means rotate anticlockwise
 
 
     // timer
@@ -158,9 +204,6 @@ function countDownTimer() {
     // end
     if(remainingTime < 0) {
         clearInterval(timerLoop); // stop setInterval() / progress bar
-        semicircles[0].style.display = 'none'; 
-        semicircles[1].style.display = 'none';
-        semicircles[2].style.display = 'none';
     
         timer.innerHTML = `
         <div>00</div>
@@ -174,8 +217,6 @@ function countDownTimer() {
         for(let i=0; i<=quizDB.length+1 ; i++) {
             submit.click();
         }
-        
-        mainContainer.style.margin = '14rem';
         quizz.style.margin = '5rem';
     }
 

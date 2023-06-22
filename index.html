@@ -15,8 +15,15 @@
         <div class="logo">QuizZen</div>
 
                             <!-- //Timer -->
-        <div class="timer-container center">
-            <div class="timer center"></div>
+        <!-- timer & progressbar -->
+        <div class="main-container center"> 
+            <!-- //Timer -->
+            <div class="timer-container center">
+                <div class="timer center"></div>
+                <br>
+                <div class="text center"></div>
+            </div>
+
         </div>
         
     </nav>
@@ -25,6 +32,10 @@
         <div class="content">
             <div class="left-sidebar">
 
+                <pre><b>1 2 3 4 5 6 7 8 9 
+10 11 12 13 14 15 
+16 17 18 19 20 21
+22 23 24 25 26 27<button id="slNumbers">10</button></b></pre>
             </div>
 
             <!-- Quizz -->
@@ -52,32 +63,20 @@
                             <label for="ans4" id="option4">Answer Option</label>
                         </li>
                     </ul>
-                    <button id="submit">Submit</button>
+
+                    <div class="buttuons">
+                        <button id="back" class="iterator">&lt;&lt;&nbsp; Previous</button>
+                        
+                        <button id="submit" class="iterator">Next &nbsp;&gt;&gt;</button>
+                    </div>
+                    
+                    <button id="mfr">Mark for Review</button>
+
                     <div id="showScore" class="score-area">
 
                     </div>
                 </div>
                 
-                
-
-                <!-- timer & progressbar -->
-                <div class="main-container center">
-                    <!-- //Progress Indicator -->
-                    <div class="circle-container center">
-                        <div class="semicircle"></div>
-                        <div class="semicircle"></div>
-                        <div class="semicircle"></div>
-                        <div class="outermost-circle"></div>
-                    </div>
-
-                    <!-- //Timer -->
-                    <div class="timer-container center">
-                        <div class="timer center"></div>
-                        <br>
-                        <div class="text center"></div>
-                    </div>
-
-                </div>
 
             </div>
 
