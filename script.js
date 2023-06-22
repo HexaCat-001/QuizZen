@@ -137,18 +137,6 @@ function countDownTimer() {
     const remainingTime = futureTime - currentTime;
     angle = (remainingTime/setTime) * 360; // angle will go down, 360-359-358-357...-180-...0 means rotate anticlockwise
 
-    // progress indicator
-    if(angle > 180) {
-        semicircles[2].style.display = 'none'; // invisiable (white-part)
-        semicircles[0].style.transform = 'rotate(180deg)';
-        semicircles[1].style.transform = `rotate(${angle}deg)`; // rotate 360' to 180' (blue-part)
-    } // first half rotation
-    else{
-        semicircles[2].style.display = 'block'; // visiable on left side (white-part)
-        semicircles[0].style.transform = `rotate(${angle}deg)`; // rotate 180' to 0' (red-part)
-        semicircles[1].style.transform = `rotate(${angle}deg)`; // rotate 180' to 0' (blue-part)
-    } // second half rotation (angle < 180)
-
 
     // timer
     const hrs = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
@@ -181,8 +169,6 @@ function countDownTimer() {
         <div class="colon">:</div>
         <div>00</div>
         `
-        text.style.display = 'flex';
-        text.innerHTML = `<h2>Time Up Buddy!</h2>`;
 
         // submit the quizz by pressing submit button
         for(let i=0; i<=quizDB.length+1 ; i++) {
