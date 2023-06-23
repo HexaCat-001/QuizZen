@@ -171,6 +171,7 @@ input, .inner-div li label  {
     margin-top: 3rem;
     transition: all ease-in-out 0.2s;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 #submit,.btn {
