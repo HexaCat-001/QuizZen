@@ -174,22 +174,6 @@ input, .inner-div li label  {
     text-transform: uppercase;
 }
 
-#submit,.btn {
-    /* padding: 1rem 1.5rem;
-    outline: none;
-    font-size: 2rem;
-    font-weight: 400;
-    display: block;
-    margin: auto;
-    border: none;
-    text-transform: uppercase;
-    color: #323232;
-    background-color: #dddefc;
-    margin-top: 3rem;
-    transition: all ease-in-out 0.2s;
-    cursor: pointer; */
-}
-
 #submit:hover, .iterator:hover, #mfr:hover {
     background-color: #9fa0bf;
     color: #fff;
