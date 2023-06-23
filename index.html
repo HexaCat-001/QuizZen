@@ -4,20 +4,113 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuizZen</title>
+    <title>Attend a Quiz</title>
     <!-- *Link style.css file -->
     <link rel="stylesheet" href="./style.css">
+    <!-- *Link FontAwsome kit -->
+    <script src="https://kit.fontawesome.com/7fad1074ee.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
+    <nav class="nav-bar">
+        <div class="logo">QuizZen</div>
 
+                            <!-- //Timer -->
+        <!-- timer & progressbar -->
+        <div class="main-container center"> 
+            <!-- //Timer -->
+            <div class="timer-container center">
+                <div class="timer center"></div>
+                <br>
+                <div class="text center"></div>
+            </div>
 
+        </div>
+        
+    </nav>
 
+    <main>
+        <div class="content">
+            <div class="left-sidebar">
+                <h2>Total Number of Questions</h2>
+                <br><br>
+                <div id="slBox"><b> 
+                    <button id="slNumbers">10</button>   
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>
+                    <button id="slNumbers">10</button>   
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>  
+                    <button id="slNumbers">10</button>   
+                </b></div>
+            </div>
 
+            <!-- Quizz -->
+            <div class="quizz">
+                <div class="inner-div">
+                    <h2 class="question">Question Comes Here</h2>
+                    <ul>
+                        <li>
+                            <input type="radio" name="options" id="ans1" class="answer" checked>
+                            <label for="ans1" id="option1">Answer Option</label>
+                        </li>
+                        
+                        <li>
+                            <input type="radio" name="options" id="ans2" class="answer">
+                            <label for="ans2" id="option2">Answer Option</label>
+                        </li>
 
+                        <li>
+                            <input type="radio" name="options" id="ans3" class="answer">
+                            <label for="ans3" id="option3">Answer Option</label>
+                        </li>
 
+                        <li>
+                            <input type="radio" name="options" id="ans4" class="answer">
+                            <label for="ans4" id="option4">Answer Option</label>
+                        </li>
+                    </ul>
 
-    
+                    <div class="buttuons">
+                        <button id="back" class="iterator">&lt;&lt;&nbsp; Previous</button>
+                        
+                        <button id="submit" class="iterator">Next &nbsp;&gt;&gt;</button>
+                    </div>
+                    
+                    <button id="mfr">Mark for Review</button>
+
+                    <div id="showScore" class="score-area">
+
+                    </div>
+                </div>
+                
+
+            </div>
+
+            <div class="right-sidebar">
+
+            </div>
+        </div>
+    </main>
+
+    <!-- <footer>
+
+    </footer> -->
+
     <!-- *Link script.js file -->
     <script src="./script.js"></script>
     <!-- *Link GSAP cdn -->
