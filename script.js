@@ -210,6 +210,15 @@ back.addEventListener("click", () => {
 buttonBox[questionCount].style.background = "#DAF7A6 ";
 buttonBox[questionCount].style.color = '#323232';
 
+// Mark for review
+
+
+
+
+
+
+
+
 // ----- TIMER -----
 // veriables
 const quizz = document.querySelector(".quizz");
