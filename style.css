@@ -34,14 +34,29 @@ html,body {
     }
 }
 
-@keyframes left-sidebar-opening {
+@keyframes left-opening {
     from{
         max-width: 0;
+        opacity: 0.1;
     }
 
     to{
-        transition: ease-in 0.9s;
+        opacity: 1;
+        transition: ease-in;
         transform:scaleX(var(--sidebar-width));
+    }
+}
+
+@keyframes up-opening {
+    from{
+        max-width: 0;
+        opacity: 0.1;
+    }
+
+    to{
+        opacity: 1;
+        transition: ease-in;
+        transform:scaleY(-1rem);
     }
 }
 
@@ -60,7 +75,7 @@ html,body {
     position: sticky;
     padding-left: 2.5rem;
     color: var(--text-color-nav);
-    animation: nav-bar-opening 0.9s;
+    animation: nav-bar-opening 0.7s;
 }
 
 .nav-list {
@@ -94,6 +109,7 @@ nav input {
     background-color: rgb(255, 255, 255);
     border-radius: 1rem;
     transition: ease-in-out 0.3s;
+    animation: up-opening .7s;
 }
 
 .inner-div {
@@ -105,6 +121,7 @@ nav input {
     box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
     transition: ease-in-out 0.3s;
     text-align: center;
+    animation: up-opening 1.2s;
 }
 
 .inner-div h2 {
@@ -149,7 +166,7 @@ input, .inner-div li label  {
     width: 3rem;
     outline: none;
     border-radius: 0.3rem;
-    transition: ease-in-out 0.3s;
+    transition: ease-in-out 0.1s;
 }
 
 .buttuons {
@@ -169,7 +186,7 @@ input, .inner-div li label  {
     color: #323232;
     background-color: #dddefc;
     margin-top: 3rem;
-    transition: all ease-in-out 0.2s;
+    transition: all ease-in-out 0.7s;
     cursor: pointer;
     text-transform: uppercase;
 }
@@ -248,8 +265,8 @@ input, .inner-div li label  {
 }
 
 .timer div {
-    font-size: 7rem;
-    font-weight: 100;
+    font-size: 4vh;
+    font-weight: 400;
     width: 8rem;
     height: 8rem;
     display: flex;
@@ -282,5 +299,52 @@ input, .inner-div li label  {
     color: #fff;
     font-size: medium;
     text-align: center;
-    animation: left-sidebar-opening 1s;
+    animation: left-opening .9s;
+}
+
+@media (max-width: 972px) {
+    .quizz {
+        
+    }
+
+    .nav-bar {
+        width: 100vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        padding: auto;
+    }
+
+    .left-sidebar {
+        height:auto;
+        margin: 7rem 0;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .nav-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        padding: 0;
+    }
+    .logo {
+        margin-top: 2rem;
+        font-size: 5rem;
+    }
+    .timer-container {
+        height: 5rem;
+    }
+    .quizz {
+        margin: 0;
+        padding: 0;
+    }
 }
