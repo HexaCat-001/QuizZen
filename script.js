@@ -155,8 +155,16 @@ const deselectAll = () => {
 submit.addEventListener("click", function submittion() {
   back.style.display = "block";
 
+  // if any answer is checked then turn it green
   buttonBox[questionCount].style.background = "green";
   buttonBox[questionCount].style.color = "white";
+
+  // if no answer is checked then turn it red
+  if(getCheckAnswer() == null) {
+    buttonBox[questionCount].style.background = "red";
+    buttonBox[questionCount].style.color = "white";
+  }
+
   const checkedAnswer = getCheckAnswer();
   if (checkedAnswer === quizDB[questionCount].ans) {
     score++;

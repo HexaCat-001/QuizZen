@@ -64,6 +64,7 @@ html,body {
 .content {
     display: flex;
     justify-content: space-between;
+    transition: ease-in-out 0.3s;
 }
 .nav-bar {
     display: flex;
@@ -299,20 +300,12 @@ input, .inner-div li label  {
     color: #fff;
     font-size: medium;
     text-align: center;
+    transition: ease-in-out 0.3s;
     animation: left-opening .9s;
 }
 
-@media (max-width: 972px) {
-    .quizz {
-        
-    }
 
-    .nav-bar {
-        width: 100vw;
-    }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 968px) {
     .content {
         flex-wrap: wrap;
         flex-direction: column-reverse;
@@ -323,7 +316,7 @@ input, .inner-div li label  {
 
     .left-sidebar {
         height:auto;
-        margin: 7rem 0;
+        margin-bottom: 7rem;
         border-radius: 10px;
     }
 }
@@ -335,6 +328,7 @@ input, .inner-div li label  {
         align-items: center;
         height: auto;
         padding: 0;
+        width: 100vw;
     }
     .logo {
         margin-top: 2rem;
@@ -344,7 +338,30 @@ input, .inner-div li label  {
         height: 5rem;
     }
     .quizz {
-        margin: 0;
-        padding: 0;
+        margin: 1rem;
+        padding: 1rem;
+    }
+    .inner-div {
+        min-width: 0;
+        padding: 3rem;
+    }
+}
+
+@media (max-width: 390px) {
+    .left-sidebar {
+        height:auto;
+        margin: 3rem 10rem;
+        border-radius: 10px;
+        padding: 2rem;
+        margin-top: 19rem;
+        margin-bottom: 10rem;
+    }
+    #slBox {
+        width: auto;
+        justify-content: center;
+    }
+    .quizz {
+        justify-content: center;
+        align-items: center;
     }
 }
