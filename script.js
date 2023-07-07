@@ -314,3 +314,17 @@ function countDownTimer() {
     quizz.style.margin = "5rem";
   }
 }
+
+// menu bar = / x
+const menuBar = document.querySelector('#menu_bar');
+const closBtn = document.querySelector('#close_btn');
+const left_sideBar = document.querySelector('.left-sidebar');
+
+menuBar.addEventListener('click',()=> {
+  left_sideBar.style.display = "flex";
+});
+
+closBtn.addEventListener('click',()=> {
+  left_sideBar.style.display = "none";
+});
+

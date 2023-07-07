@@ -94,6 +94,10 @@ html,body {
 .logo {
     font-weight:900;
     font-size: 4.2rem;
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
 }
 
 nav input {
@@ -149,6 +153,9 @@ input, .inner-div li label  {
     display: flex;
     flex-wrap: wrap;
     width: 20rem;
+    justify-content: center;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
 }
 
 #slBox ul {
@@ -303,7 +310,46 @@ input, .inner-div li label  {
     transition: ease-in-out 0.3s;
     animation: left-opening .9s;
 }
+ 
+input {
+    display: none;
+}
 
+.btnOne label i{
+    margin-right: 2rem;
+}
+
+.btnOne label, .btnTwo label {
+    color: #ffffff;
+    font-size: 4rem;
+
+}
+
+.btnTwo label i {
+    margin-top: 0.5rem;
+    padding: 2.5rem;
+}
+
+.menuBtn {
+    display: none;
+    margin-right: 1rem;
+}
+
+@media (max-width: 1400px) {
+    .btnTwo label i {
+        display: none;
+    }
+    .left-sidebar {
+        display: flex;
+    }
+
+}
+
+@media (min-width: 969px) {
+    .left-sidebar {
+        display: flex;
+    }
+}
 
 @media (max-width: 968px) {
     .content {
@@ -315,9 +361,27 @@ input, .inner-div li label  {
     }
 
     .left-sidebar {
+        display: none;
         height:auto;
         margin-bottom: 7rem;
         border-radius: 10px;
+        position: absolute;
+        top: 0;
+        margin-top: 15vh;
+        opacity: 0.9;
+        animation: up-opening;
+    }
+
+    .menuBtn {
+        display: inline-block;
+    }
+
+    .btnTwo label i {
+        display: inline-block;
+    }
+
+    html {
+        font-size: 1.2vh;
     }
 }
 
@@ -344,6 +408,11 @@ input, .inner-div li label  {
     .inner-div {
         min-width: 0;
         padding: 3rem;
+    }
+
+    .left-sidebar {
+        margin-top: 19rem;
+        min-width: 19rem;
     }
 }
 
