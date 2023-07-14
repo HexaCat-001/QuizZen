@@ -325,10 +325,6 @@ input {
     animation: left-opening .9s;
 }
  
-input[type="radio"] {
-    /* display: none; */
-    
-}
 
 .btnOne label i{
     margin-right: 2rem;
