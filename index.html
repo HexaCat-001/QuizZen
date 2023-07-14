@@ -13,8 +13,20 @@
     <script src="https://kit.fontawesome.com/7fad1074ee.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="nav-bar">
-        <div class="logo">QuizZen</div>
+    <nav class="nav-bar">        
+
+        <div class="logo">
+            <div class="menuBtn">
+                <input type="checkbox" name="" id="check">
+                <div class="btnOne">
+                    <label for="check">  
+                        <i class="fa-solid fa-bars" id="menu_bar"></i>
+                    </label>
+                </div>  
+            </div> 
+            
+            QuizZen
+        </div>
 
                             <!-- //Timer -->
         <!-- timer & progressbar -->
@@ -32,12 +44,18 @@
 
     <main>
         <div class="content">
+
             <div class="left-sidebar">
                 <h2>Total Number of Questions</h2>
-                <br><br>
-                <div id="slBox"><b> 
-  
-                </b></div>
+
+                <div class="btnTwo">
+                    <label for="check">  
+                        <i class="fa-solid fa-close" id="close_btn"></i>
+                    </label>
+                </div>
+
+                <div id="slBox"> 
+                </div>
             </div>
 
             <!-- Quizz -->
@@ -66,10 +84,10 @@
                         </li>
                     </ul>
 
-                    <div class="buttuons">
-                        <button id="back" class="iterator">&lt;&lt;&nbsp; Previous</button>
+                    <div class="buttons">
+                        <button id="back" class="iterator"> <span id="before">&lt;&lt;</span> &nbsp; Previous</button>
                         
-                        <button id="submit" class="iterator">Next &nbsp;&gt;&gt;</button>
+                        <button id="submit" class="iterator">Next &nbsp; <span id="after">&gt;&gt;</span> </button>
                     </div>
                     
                     <button id="mfr">Mark for Review</button>
@@ -98,5 +116,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- *Link GSAP cdn -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js" integrity="sha512-cOH8ndwGgPo+K7pTvMrqYbmI8u8k6Sho3js0gOqVWTmQMlLIi6TbqGWRTpf1ga8ci9H3iPsvDLr4X7xwhC/+DQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </body>
 </html>

@@ -92,6 +92,7 @@ const mfr = document.querySelector("#mfr");
 const back = document.querySelector("#back");
 const answers = document.querySelectorAll(".answer");
 const showScore = document.querySelector("#showScore");
+const slNumbers = document.querySelectorAll(".slNumbers");
 
 // this array is for storing the answers
 let ansArray = new Array(quizDB.length - 1);
@@ -113,6 +114,24 @@ const loadSLNumbers = () => {
 };
 // function calling
 loadSLNumbers();
+
+// when any sl no/box is pressed the question & options related to that sl no will loaded
+// slNumbers.addEventListener('click',() => {
+//   let slno = slNumbers.innerHTML;
+
+//   const questionList = quizDB[slno];
+
+//   question.innerText = questionList.question;
+
+//   option1.innerText = questionList.a;
+//   option2.innerText = questionList.b;
+//   option3.innerText = questionList.c;
+//   option4.innerText = questionList.d;
+
+// })
+
+
+
 
 // Start 2 iterators, one for quizDB array another for score
 let questionCount = 0;
@@ -261,7 +280,7 @@ const text = document.querySelector(".text");
 
 // todo -> input(give allocated time)
 const hr = 0;
-const min = 0;
+const min = 50;
 const sec = 20;
 
 const hours = hr * 36000000;
@@ -292,7 +311,6 @@ function countDownTimer() {
     `;
   text.style.display = "none";
 
-  // 5sec-condition
 
   // end
   if (remainingTime < 0) {
@@ -314,3 +332,25 @@ function countDownTimer() {
     quizz.style.margin = "5rem";
   }
 }
+
+// menu bar (= / x) & cross button
+const menuBar = document.querySelector('#menu_bar');
+const closBtn = document.querySelector('#close_btn');
+const left_sideBar = document.querySelector('.left-sidebar');
+
+menuBar.addEventListener('click',()=> {
+  left_sideBar.style.display = "flex";
+});
+
+closBtn.addEventListener('click',()=> {
+  left_sideBar.style.display = "none";
+});
+
+
+// input button uncheck
+$('.answer').dblclick(function(){
+  if($(this).is('checked'))
+  {
+      $(this).removeAttr('checked');
+  }
+});

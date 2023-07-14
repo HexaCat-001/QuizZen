@@ -60,6 +60,7 @@ html,body {
     }
 }
 
+
 /* Nav-Bar */
 .content {
     display: flex;
@@ -94,6 +95,10 @@ html,body {
 .logo {
     font-weight:900;
     font-size: 4.2rem;
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
 }
 
 nav input {
@@ -121,7 +126,7 @@ nav input {
     border-radius: 1rem;
     box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
     transition: ease-in-out 0.3s;
-    text-align: center;
+    text-align: left;
     animation: up-opening 1.2s;
 }
 
@@ -139,6 +144,14 @@ nav input {
 
 input, .inner-div li label  {
     cursor: pointer;
+    margin-right: 2rem;
+}
+
+input {
+    /* appearance: none; */
+    width: 2.5rem;
+    height: 2.5rem;
+    accent-color: hwb(284 18% 0% / 0.309);;
 }
 
 #back {
@@ -149,6 +162,9 @@ input, .inner-div li label  {
     display: flex;
     flex-wrap: wrap;
     width: 20rem;
+    justify-content: center;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
 }
 
 #slBox ul {
@@ -168,12 +184,15 @@ input, .inner-div li label  {
     outline: none;
     border-radius: 0.3rem;
     transition: ease-in-out 0.1s;
+    cursor: pointer;
 }
 
-.buttuons {
+.buttons {
     display: flex;
     justify-content: space-evenly;
+    margin: 2rem 0;
 }
+
 .iterator,#mfr {
     background-color: none;
     padding: 1rem 1.5rem;
@@ -187,14 +206,16 @@ input, .inner-div li label  {
     color: #323232;
     background-color: #dddefc;
     margin-top: 3rem;
-    transition: all ease-in-out 0.7s;
+    transition: all ease-in-out 0.3s;
     cursor: pointer;
     text-transform: uppercase;
+    border-radius: 0.5rem;
 }
 
 #submit:hover, .iterator:hover, #mfr:hover {
     background-color: #9fa0bf;
     color: #fff;
+    box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
 }
 
 #showScore {
@@ -282,7 +303,9 @@ input, .inner-div li label  {
     width: 1rem;
     margin-left: 0;
     margin-right: 0;
-    padding-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    align-items: center;
+    justify-content: center;
 }
 
 .left-sidebar {
@@ -294,16 +317,57 @@ input, .inner-div li label  {
     align-items: center;
     display: flex;
     flex-direction: column;
-    border-top-right-radius: 10px;
-    margin-top: 10px;
-    padding-top: 2rem;
+    padding-top: 5rem;
     color: #fff;
     font-size: medium;
     text-align: center;
     transition: ease-in-out 0.3s;
     animation: left-opening .9s;
 }
+ 
+input[type="radio"] {
+    /* display: none; */
+    
+}
 
+.btnOne label i{
+    margin-right: 2rem;
+}
+
+.btnOne label, .btnTwo label {
+    color: #ffffff;
+    font-size: 4rem;
+
+} /* menu button */
+
+.btnTwo label i {
+    margin-top: 0.5rem;
+    padding: 2.5rem;
+} /* close button */
+
+.menuBtn {
+    display: none;
+    margin-right: 1rem;
+}
+
+@media (min-width: 1400px) {
+    .btnTwo label i {
+        display: none;
+    }
+    .left-sidebar {
+        display: flex;
+    }
+
+}
+
+@media (min-width: 969px) {
+    .left-sidebar {
+        display: flex;
+    }
+    .btnTwo label i {
+        display: none;
+    }
+}
 
 @media (max-width: 968px) {
     .content {
@@ -315,9 +379,27 @@ input, .inner-div li label  {
     }
 
     .left-sidebar {
+        display: none;
         height:auto;
         margin-bottom: 7rem;
         border-radius: 10px;
+        position: absolute;
+        top: 0;
+        margin-top: 15vh;
+        opacity: 0.9;
+        animation: up-opening;
+    }
+
+    .menuBtn {
+        display: inline-block;
+    }
+
+    .btnTwo label i {
+        display: inline-block;
+    }
+
+    html {
+        font-size: 1.2vh;
     }
 }
 
@@ -344,6 +426,11 @@ input, .inner-div li label  {
     .inner-div {
         min-width: 0;
         padding: 3rem;
+    }
+
+    .left-sidebar {
+        margin-top: 19rem;
+        min-width: 19rem;
     }
 }
 
