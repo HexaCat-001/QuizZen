@@ -115,11 +115,9 @@ const loadSLNumbers = () => {
 // function calling
 loadSLNumbers();
 
-// when any sl no/box is pressed the question & options related to that sl no will loaded
-// slNumbers.addEventListener('click',() => {
-//   let slno = slNumbers.innerHTML;
-
-//   const questionList = quizDB[slno];
+//! when any sl no/box is pressed the question & options related to that sl no will loaded
+// buttonBox.addEventListener('click', () => {
+//   const questionList = quizDB[5];
 
 //   question.innerText = questionList.question;
 
@@ -127,9 +125,7 @@ loadSLNumbers();
 //   option2.innerText = questionList.b;
 //   option3.innerText = questionList.c;
 //   option4.innerText = questionList.d;
-
 // })
-
 
 
 
@@ -150,6 +146,7 @@ const loadQuestion = () => {
   option4.innerText = questionList.d;
   // back.style.display = 'none';
 
+  //! checked the previously checked option if any 
   answers.forEach((curAnsElem) => {
     if (ansArray[questionCount] == option1.tagName || option2.tagName || option3.tagName || option4.tagName) {
       curAnsElem.checked
@@ -160,10 +157,12 @@ const loadQuestion = () => {
 // function calling
 loadQuestion();
 
-// Mark For Review
-mfr.addEventListener("click", () => {});
+//! Mark For Review
+mfr.addEventListener("click", () => {
 
-// this function for get the checked answer's id and push the answer value
+});
+
+//! this function for get the checked answer's id and push the answer value
 const getCheckAnswer = () => {
   let answer;
   answers.forEach((curAnsElem) => {
@@ -280,7 +279,7 @@ const text = document.querySelector(".text");
 
 // todo -> input(give allocated time)
 const hr = 0;
-const min = 50;
+const min = 0;
 const sec = 20;
 
 const hours = hr * 36000000;

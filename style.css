@@ -138,8 +138,9 @@ nav input {
 
 .inner-div li {
     list-style: none;
-    font-size: 1.7rem;
+    font-size: 2rem;
     margin-top: 1.5rem;
+    align-items: center;
 }
 
 input, .inner-div li label  {
@@ -267,7 +268,7 @@ input {
 }
 
 .timer-container {
-    width: 33rem;
+    width: 20.1rem;
     height: 20rem;
     z-index: 6;
     display: flex;
