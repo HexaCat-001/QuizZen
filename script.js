@@ -353,3 +353,34 @@ $('.answer').dblclick(function(){
       $(this).removeAttr('checked');
   }
 });
+
+// click menu button at 968 px width & click close button at 967px
+function myFunction(x) {
+  if (x.matches) { // If media query matches
+    menuBar.click();
+  }
+  else {}
+}
+
+function myFunction2(y) {
+  if (y.matches) { // If media query matches
+    closBtn.click();
+  }
+  else {}
+}
+
+let x = window.matchMedia("(min-width: 968px)");
+let y = window.matchMedia("(max-width: 967px)");
+
+myFunction(x);
+myFunction2(y);
+
+x.addEventListener('change',myFunction);
+y.addEventListener('change',myFunction2);
+
+
+
+
+setInterval(myFunction(x,y) , 200);
+let specificWidth =[x,y]
+specificWidth.addEventListener('change',myFunction)
