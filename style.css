@@ -240,6 +240,7 @@ input {
 #showScore {
     background-color: #ffffff;
     margin-top: 3rem;
+    border-radius: 0.2rem;
     padding: 3rem 4rem;
     box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
     transition: ease-in-out;
@@ -260,6 +261,8 @@ input {
     font-weight: 400;
     border: none;
     cursor: pointer;
+    border-radius: 0.5rem;
+    transition: ease-in-out 0.3s;
 }
 
 #showScore .btn:hover{
