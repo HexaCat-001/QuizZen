@@ -280,7 +280,7 @@ const text = document.querySelector(".text");
 // todo -> input(give allocated time)
 const hr = 0;
 const min = 0;
-const sec = 20;
+const sec = 2000;
 
 const hours = hr * 36000000;
 const minutes = min * 60000;
