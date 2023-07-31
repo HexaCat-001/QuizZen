@@ -406,13 +406,14 @@ const left_sideBar = document.querySelector('.left-sidebar');
 
 menuBar.addEventListener('click',()=> {
   if(left_sideBar.style.display == "flex"){
-    left_sideBar.style.display ="none" ;
+    // left_sideBar.style.display ="none" ;
   }else{
     left_sideBar.style.display ="flex" ;
   }
 });
-menuBar.addEventListener("dblclick",()=>{
-  left_sideBar.style.display = "none";
+
+menuBar.addEventListener('dblclick',()=>{
+    left_sideBar.style.display ="none" ;
 })
 
 closBtn.addEventListener('click',()=> {
@@ -436,6 +437,11 @@ function myFunction(x) {
   else {}
 }
 
+function menuclose(){
+  closBtn.click();
+} 
+
+
 function myFunction2(y) {
   if (y.matches) { // If media query matches
     closBtn.click();
@@ -446,13 +452,12 @@ function myFunction2(y) {
 let x = window.matchMedia("(min-width: 968px)");
 let y = window.matchMedia("(max-width: 967px)");
 
-myFunction(x);
 myFunction2(y);
+myFunction(x);
+
 
 x.addEventListener('change',myFunction);
 y.addEventListener('change',myFunction2);
-
-
 
 
 setInterval(myFunction(x,y) , 200);
