@@ -1,5 +1,6 @@
 const quizDB = [
   {
+    qid: "1",
     question: "Q1: What is the fullform of HTML?",
     a: "Hi Text Markup Law",
     b: "Hello To My Land",
@@ -8,6 +9,7 @@ const quizDB = [
     ans: "ans4",
   },
   {
+    qid: "2",
     question: "Q2: What is the fullform of CSS?",
     a: "Cascading Style Sheets",
     b: "Cascading Style Sheep",
@@ -16,6 +18,7 @@ const quizDB = [
     ans: "ans1",
   },
   {
+    qid: "3",
     question: "Q3: What is the fullform of HTTP?",
     a: "Hypertext Transfer Product",
     b: "Hypertext Train Product",
@@ -24,6 +27,7 @@ const quizDB = [
     ans: "ans4",
   },
   {
+    qid: "4",
     question: "Q4: What is the fullform of JS?",
     a: "Java Script",
     b: "Jana Script",
@@ -32,6 +36,7 @@ const quizDB = [
     ans: "ans1",
   },
   {
+    qid: "5",
     question: "Q5: What is the fullform of IAS?",
     a: "Indian Apple Shop",
     b: "Indian Administritive Service",
@@ -40,6 +45,7 @@ const quizDB = [
     ans: "ans2",
   },
   {
+    qid: "6",
     question: "Q6: What is the fullform of IAS?",
     a: "Indian Apple Shop",
     b: "Indian Administritive Service",
@@ -48,6 +54,7 @@ const quizDB = [
     ans: "ans2",
   },
   {
+    qid: "7",
     question: "Q7: What is the fullform of IAS?",
     a: "Indian Apple Shop",
     b: "Indian Administritive Service",
@@ -56,6 +63,7 @@ const quizDB = [
     ans: "ans2",
   },
   {
+    qid: "8",
     question: "Q8: What is the fullform of IAS?",
     a: "Indian Apple Shop",
     b: "Indian Administritive Service",
@@ -64,6 +72,7 @@ const quizDB = [
     ans: "ans2",
   },
   {
+    qid: "9",
     question: "Q9: What is the fullform of IAS?",
     a: "Indian Apple Shop",
     b: "Indian Administritive Service",
@@ -72,6 +81,7 @@ const quizDB = [
     ans: "ans2",
   },
   {
+    qid: "10",
     question: "Q10: What is the fullform of IAS?",
     a: "Indian Apple Shop",
     b: "Indian Administritive Service",
@@ -146,9 +156,9 @@ const loadQuestion = () => {
   option4.innerText = questionList.d;
   // back.style.display = 'none';
 
-  //! checked the previously checked option if any 
+  // ! checked the previously checked option if any 
   answers.forEach((curAnsElem) => {
-    if (ansArray[questionCount] == option1.tagName || option2.tagName || option3.tagName || option4.tagName) {
+    if (ansArray[questionCount] == option1.tagName ||ansArray[questionCount] == option2.tagName ||ansArray[questionCount] == option3.tagName ||ansArray[questionCount] == option4.tagName) {
       curAnsElem.checked
     }
   });
@@ -157,22 +167,33 @@ const loadQuestion = () => {
 // function calling
 loadQuestion();
 
-//! Mark For Review
-mfr.addEventListener("click", () => {
 
+
+// Mark For Review
+
+let mrkArray = new Array(quizDB.length - 1);
+
+mfr.addEventListener("click", () => {
+  mrkArray[questionCount] = 1;
+  buttonBox[questionCount].style.background = "yellow";
+  buttonBox[questionCount].style.color = "black";
 });
 
-//! this function for get the checked answer's id and push the answer value
+// this function for get the checked answer's id and push the answer value
 const getCheckAnswer = () => {
   let answer;
   answers.forEach((curAnsElem) => {
     if (curAnsElem.checked) {
-      answer = curAnsElem.id;
+      answer= curAnsElem.id;
       ansArray.push(curAnsElem.id);
     }
   });
   return answer;
 };
+
+// Array for storing answers temporarily
+let temArray = new Array(quizDB.length - 1);
+
 
 // this function is for deselecting previous selection for each time
 const deselectAll = () => {
@@ -181,24 +202,56 @@ const deselectAll = () => {
   });
 };
 
+// this function is for getting and loading previously selected answers
+function loadAnswer(){
+  let ansId = temArray[questionCount];
+  if(temArray[questionCount] == "ans1")
+    document.querySelector("#ans1").checked = true;
+  else if(ansId == "ans2")
+    document.querySelector("#ans2").checked = true;
+  else if(ansId == "ans3")
+    document.querySelector("#ans3").checked = true;
+  else if(ansId == "ans4")
+    document.querySelector("#ans4").checked = true;
+}
+
 // for  (>> next) button
 submit.addEventListener("click", function submittion() {
   back.style.display = "block";
 
+  
   // if no answer is checked then turn it red else turn it green
-  if(getCheckAnswer() == null) {
+  if(getCheckAnswer() == null && mrkArray[questionCount]!=1) {
     buttonBox[questionCount].style.background = "red";
     buttonBox[questionCount].style.color = "white";
   }
-  else {
-    buttonBox[questionCount].style.background = "green";
-    buttonBox[questionCount].style.color = "white";
+  else if(mrkArray[questionCount]==1)
+  {
+    buttonBox[questionCount].style.background = "yellow";
+    buttonBox[questionCount].style.color = "black";
+  }
+  else{
+    answers.forEach((currAnsElem) => {
+      if(currAnsElem.checked == true){
+        buttonBox[questionCount].style.background = "green";
+        buttonBox[questionCount].style.color = "white";  
+      }
+    });
+    
   }
 
   const checkedAnswer = getCheckAnswer();
   if (checkedAnswer === quizDB[questionCount].ans) {
     score++;
   }
+
+  // For storing previous selected values
+
+  answers.forEach((curElem) =>{
+    if(curElem.checked){
+      temArray[questionCount] = curElem.id;
+    }
+  });
   
   questionCount++;
   
@@ -206,7 +259,9 @@ submit.addEventListener("click", function submittion() {
 
   if (questionCount < quizDB.length) {
     loadQuestion();
-  } else {
+    loadAnswer();
+  } 
+  else {
     showScore.innerHTML = `
             <h3> You Scored: ${score}/${quizDB.length} <h3>
             <button class="btn" onclick="location.reload()">Play Again</button>
@@ -234,24 +289,37 @@ back.addEventListener("click", () => {
   }
 
   questionCount--;
+
+  
+  
+
   buttonBox[questionCount].style.background = "#DAF7A6 ";
   buttonBox[questionCount].style.color = '#323232';
 
+  
   // if no answer is checked then turn it red else turn it green
-  if(getCheckAnswer() == null) {
+  if(getCheckAnswer() == null && mrkArray[questionCount+1]!=1) {
     buttonBox[questionCount+1].style.background = "red";
     buttonBox[questionCount+1].style.color = "white";
   }
-  else 
+  else if(mrkArray[questionCount+1]==1)
   {
-    buttonBox[questionCount+1].style.background = "green";
-    buttonBox[questionCount+1].style.color = "white";
+    buttonBox[questionCount+1].style.background = "yellow";
+    buttonBox[questionCount+1].style.color = "black";
   }
-
+  else{
+    answers.forEach((currAnsElem) => {
+      if(currAnsElem.checked == true){
+        buttonBox[questionCount+1].style.background = "green";
+        buttonBox[questionCount+1].style.color = "white"; 
+      }
+    });
+  }
   deselectAll();
 
   if (questionCount < quizDB.length) {
     loadQuestion();
+    loadAnswer();
   }
   if (questionCount < 1) {
     back.style.display = "none";
@@ -269,7 +337,6 @@ buttonBox[questionCount].style.color = '#323232';
 
 
 
-
 // ----- TIMER -----
 // veriables
 const quizz = document.querySelector(".quizz");
@@ -280,7 +347,7 @@ const text = document.querySelector(".text");
 // todo -> input(give allocated time)
 const hr = 0;
 const min = 0;
-const sec = 20;
+const sec = 2000;
 
 const hours = hr * 36000000;
 const minutes = min * 60000;
@@ -340,6 +407,9 @@ const left_sideBar = document.querySelector('.left-sidebar');
 menuBar.addEventListener('click',()=> {
   left_sideBar.style.display = "flex";
 });
+menuBar.addEventListener("dblclick",()=>{
+  left_sideBar.style.display = "none";
+})
 
 closBtn.addEventListener('click',()=> {
   left_sideBar.style.display = "none";
