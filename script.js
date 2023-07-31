@@ -338,7 +338,11 @@ const closBtn = document.querySelector('#close_btn');
 const left_sideBar = document.querySelector('.left-sidebar');
 
 menuBar.addEventListener('click',()=> {
-  left_sideBar.style.display = "flex";
+  if(left_sideBar.style.display == "flex"){
+    left_sideBar.style.display ="none" ;
+  }else{
+    left_sideBar.style.display ="flex" ;
+  }
 });
 
 closBtn.addEventListener('click',()=> {
