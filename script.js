@@ -167,7 +167,6 @@ const getCheckAnswer = () => {
   let answer;
   answers.forEach((curAnsElem) => {
     if (curAnsElem.checked) {
-      answer = curAnsElem.id;
       ansArray.push(curAnsElem.id);
     }
   });
