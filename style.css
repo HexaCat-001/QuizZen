@@ -118,12 +118,12 @@ nav input {
     border-radius: 1rem;
     transition: ease-in-out 0.3s;
     animation: up-opening .7s;
-    margin-top: -2rem;
+    margin: auto;
 }
 
-div.quizz {
+/* div.quizz {
     margin-top: -30rem;
-}
+} */
 
 .inner-div {
     min-width: 40vw;
@@ -376,12 +376,15 @@ input {
     margin-right: 1rem;
 }
 
-@media (min-width: 1400px) {
+@media (max-width: 1900px) {
     .btnTwo label i {
         display: none;
     }
     .left-sidebar {
         display: flex;
+    }
+    .quizz {
+        margin-bottom: 35vh;
     }
 }
 
@@ -449,10 +452,10 @@ input {
     .timer-container {
         height: 5rem;
     }
-    .quizz {
+    /* .quizz {
         margin: 1rem;
         padding: 1rem;
-    }
+    } */
     .inner-div {
         min-width: 0;
         padding: 3rem;
@@ -463,12 +466,12 @@ input {
         min-width: 19rem;
     }
 
-    div.quizz {
+    /* div.quizz {
         margin-top: 4rem;
-    }
+    } */
 }
 
-@media (max-width: 390px) {
+@media (max-width: 450px) {
     .left-sidebar {
         height:auto;
         margin: 3rem 10rem;
@@ -482,14 +485,12 @@ input {
         justify-content: center;
     }
     .quizz {
-        justify-content: center;
-        align-items: center;
-        margin: 0.1rem;
+        padding: 2.5rem;
     }
-
+/* 
     div.quizz {
         margin-top: 5rem;
-    }
+    } */
 
     .nav-bar {
         padding: 0;

@@ -1,5 +1,6 @@
 const quizDB = [
   {
+    qid: "1",
     question: "Q1: What is the fullform of HTML?",
     a: "Hi Text Markup Law",
     b: "Hello To My Land",
@@ -8,6 +9,7 @@ const quizDB = [
     ans: "ans4",
   },
   {
+    qid: "2",
     question: "Q2: What is the fullform of CSS?",
     a: "Cascading Style Sheets",
     b: "Cascading Style Sheep",
@@ -16,6 +18,7 @@ const quizDB = [
     ans: "ans1",
   },
   {
+    qid: "3",
     question: "Q3: What is the fullform of HTTP?",
     a: "Hypertext Transfer Product",
     b: "Hypertext Train Product",
@@ -24,6 +27,7 @@ const quizDB = [
     ans: "ans4",
   },
   {
+    qid: "4",
     question: "Q4: What is the fullform of JS?",
     a: "Java Script",
     b: "Jana Script",
@@ -32,6 +36,7 @@ const quizDB = [
     ans: "ans1",
   },
   {
+    qid: "5",
     question: "Q5: What is the fullform of IAS?",
     a: "Indian Apple Shop",
     b: "Indian Administritive Service",
@@ -40,6 +45,7 @@ const quizDB = [
     ans: "ans2",
   },
   {
+    qid: "6",
     question: "Q6: What is the fullform of IAS?",
     a: "Indian Apple Shop",
     b: "Indian Administritive Service",
@@ -48,6 +54,7 @@ const quizDB = [
     ans: "ans2",
   },
   {
+    qid: "7",
     question: "Q7: What is the fullform of IAS?",
     a: "Indian Apple Shop",
     b: "Indian Administritive Service",
@@ -56,6 +63,7 @@ const quizDB = [
     ans: "ans2",
   },
   {
+    qid: "8",
     question: "Q8: What is the fullform of IAS?",
     a: "Indian Apple Shop",
     b: "Indian Administritive Service",
@@ -64,6 +72,7 @@ const quizDB = [
     ans: "ans2",
   },
   {
+    qid: "9",
     question: "Q9: What is the fullform of IAS?",
     a: "Indian Apple Shop",
     b: "Indian Administritive Service",
@@ -72,6 +81,7 @@ const quizDB = [
     ans: "ans2",
   },
   {
+    qid: "10",
     question: "Q10: What is the fullform of IAS?",
     a: "Indian Apple Shop",
     b: "Indian Administritive Service",
@@ -115,20 +125,6 @@ const loadSLNumbers = () => {
 // function calling
 loadSLNumbers();
 
-//! when any sl no/box is pressed the question & options related to that sl no will loaded
-// buttonBox.addEventListener('click', () => {
-//   const questionList = quizDB[5];
-
-//   question.innerText = questionList.question;
-
-//   option1.innerText = questionList.a;
-//   option2.innerText = questionList.b;
-//   option3.innerText = questionList.c;
-//   option4.innerText = questionList.d;
-// })
-
-
-
 // Start 2 iterators, one for quizDB array another for score
 let questionCount = 0;
 let answerCount = 0;
@@ -146,9 +142,9 @@ const loadQuestion = () => {
   option4.innerText = questionList.d;
   // back.style.display = 'none';
 
-  //! checked the previously checked option if any 
+  // ! checked the previously checked option if any 
   answers.forEach((curAnsElem) => {
-    if (ansArray[questionCount] == option1.tagName || option2.tagName || option3.tagName || option4.tagName) {
+    if (ansArray[questionCount] == option1.tagName ||ansArray[questionCount] == option2.tagName ||ansArray[questionCount] == option3.tagName ||ansArray[questionCount] == option4.tagName) {
       curAnsElem.checked
     }
   });
@@ -157,21 +153,71 @@ const loadQuestion = () => {
 // function calling
 loadQuestion();
 
-//! Mark For Review
-mfr.addEventListener("click", () => {
 
+
+//! Mark For Review
+
+let mrkArray = new Array(quizDB.length - 1);
+
+mfr.addEventListener("click", () => {
+  if(mrkArray[questionCount] == 1)
+  {
+    mrkArray[questionCount] = 0;
+    if(getCheckAnswer() == null && mrkArray[questionCount]!=1) {
+      buttonBox[questionCount].style.background = "red";
+      buttonBox[questionCount].style.color = "white";
+    }
+    else{
+      answers.forEach((currAnsElem) => {
+        if(currAnsElem.checked == true){
+          buttonBox[questionCount].style.background = "green";
+          buttonBox[questionCount].style.color = "white";  
+        }
+      });
+    }
+    mfr.innerHTML = "Mark for Review";
+  }
+  else{
+    mrkArray[questionCount] = 1;
+    buttonBox[questionCount].style.background = "yellow";
+    buttonBox[questionCount].style.color = "black";
+    mfr.innerHTML = "Unmark";
+  }
 });
+
+// Mark for review Button value change 
+
+function buttonChange(){
+  if(mrkArray[questionCount]==1)
+  {
+    mfr.innerHTML = "Unmark";
+  }
+  else{
+    mfr.innerHTML = "Mark for Review";
+  }
+}
+
+
+
+
 
 //! this function for get the checked answer's id and push the answer value
 const getCheckAnswer = () => {
   let answer;
   answers.forEach((curAnsElem) => {
     if (curAnsElem.checked) {
+      answer= curAnsElem.id;
       ansArray.push(curAnsElem.id);
     }
   });
   return answer;
 };
+
+// Array for storing answers temporarily
+
+let temArray = new Array(quizDB.length - 1);
+
+
 
 // this function is for deselecting previous selection for each time
 const deselectAll = () => {
@@ -180,24 +226,57 @@ const deselectAll = () => {
   });
 };
 
+// for loading previous answers 
+function loadAnswer(){
+  let ansId = temArray[questionCount];
+  if(ansId == "ans1")
+    document.querySelector("#ans1").checked = true;
+  else if(ansId == "ans2")
+    document.querySelector("#ans2").checked = true;
+  else if(ansId == "ans3")
+    document.querySelector("#ans3").checked = true;
+  else if(ansId == "ans4")
+    document.querySelector("#ans4").checked = true;
+}
+
 // for  (>> next) button
 submit.addEventListener("click", function submittion() {
   back.style.display = "block";
 
+  
   // if no answer is checked then turn it red else turn it green
-  if(getCheckAnswer() == null) {
+  if(getCheckAnswer() == null && mrkArray[questionCount]!=1) {
     buttonBox[questionCount].style.background = "red";
     buttonBox[questionCount].style.color = "white";
   }
-  else {
-    buttonBox[questionCount].style.background = "green";
-    buttonBox[questionCount].style.color = "white";
+  else if(mrkArray[questionCount]==1)
+  {
+    buttonBox[questionCount].style.background = "yellow";
+    buttonBox[questionCount].style.color = "black";
   }
+  else{
+    answers.forEach((currAnsElem) => {
+      if(currAnsElem.checked == true){
+        buttonBox[questionCount].style.background = "green";
+        buttonBox[questionCount].style.color = "white";  
+      }
+    });
+    
+  }
+
 
   const checkedAnswer = getCheckAnswer();
   if (checkedAnswer === quizDB[questionCount].ans) {
     score++;
   }
+
+  // For storing previous selected values
+
+  answers.forEach((curElem) =>{
+    if(curElem.checked){
+      temArray[questionCount] = curElem.id;
+    }
+  });
   
   questionCount++;
   
@@ -205,7 +284,10 @@ submit.addEventListener("click", function submittion() {
 
   if (questionCount < quizDB.length) {
     loadQuestion();
-  } else {
+    loadAnswer();
+    buttonChange();
+  } 
+  else {
     showScore.innerHTML = `
             <h3> You Scored: ${score}/${quizDB.length} <h3>
             <button class="btn" onclick="location.reload()">Play Again</button>
@@ -222,7 +304,9 @@ submit.addEventListener("click", function submittion() {
   buttonBox[questionCount].style.color = '#323232';
 });
 
+function colorFiller(){
 
+}
 
 
 // for  (<< previous) button
@@ -233,24 +317,56 @@ back.addEventListener("click", () => {
   }
 
   questionCount--;
+
+  
+  
+
   buttonBox[questionCount].style.background = "#DAF7A6 ";
   buttonBox[questionCount].style.color = '#323232';
 
+  
   // if no answer is checked then turn it red else turn it green
-  if(getCheckAnswer() == null) {
+  if(getCheckAnswer() == null && mrkArray[questionCount+1]!=1) {
     buttonBox[questionCount+1].style.background = "red";
     buttonBox[questionCount+1].style.color = "white";
   }
-  else 
+  else if(mrkArray[questionCount+1]==1)
   {
-    buttonBox[questionCount+1].style.background = "green";
-    buttonBox[questionCount+1].style.color = "white";
+    buttonBox[questionCount+1].style.background = "yellow";
+    buttonBox[questionCount+1].style.color = "black";
   }
+  // else if(mrkArray[questionCount+1]==1)
+  // {
+  //   answers.forEach((currAnsElem) => {
+  //     if(currAnsElem.checked == true){
+  //       buttonBox[questionCount+1].style.background = "green";
+  //       buttonBox[questionCount+1].style.color = "white";
+  //       mrkArray[questionCount+1] = 0;
+  //       return;
+  //     }
+  //     else if(currAnsElem.checked != true)
+  //     {
+  //       buttonBox[questionCount+1].style.background = "yellow";
+  //       buttonBox[questionCount+1].style.color = "black";
+  //       return;
+  //     }
+  //   });
 
+  // }
+  else{
+    answers.forEach((currAnsElem) => {
+      if(currAnsElem.checked == true){
+        buttonBox[questionCount+1].style.background = "green";
+        buttonBox[questionCount+1].style.color = "white"; 
+      }
+    });
+  }
   deselectAll();
 
   if (questionCount < quizDB.length) {
     loadQuestion();
+    loadAnswer();
+    buttonChange();
   }
   if (questionCount < 1) {
     back.style.display = "none";
@@ -268,7 +384,6 @@ buttonBox[questionCount].style.color = '#323232';
 
 
 
-
 // ----- TIMER -----
 // veriables
 const quizz = document.querySelector(".quizz");
@@ -279,7 +394,7 @@ const text = document.querySelector(".text");
 // todo -> input(give allocated time)
 const hr = 0;
 const min = 0;
-const sec = 20;
+const sec = 2000;
 
 const hours = hr * 36000000;
 const minutes = min * 60000;
