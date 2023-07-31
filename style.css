@@ -376,7 +376,7 @@ input {
     margin-right: 1rem;
 }
 
-@media (max-width: 1900px) {
+@media (max-width: 2000px) {
     .btnTwo label i {
         display: none;
     }
