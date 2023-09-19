@@ -1,3 +1,4 @@
+// Question Answer Array
 const quizDB = [
   {
     qid: "1",
@@ -91,7 +92,7 @@ const quizDB = [
   },
 ];
 
-// Get all structured element & store it into a veriable
+//! Get all structured element & store it into a veriable
 const question = document.querySelector(".question");
 const option1 = document.querySelector("#option1");
 const option2 = document.querySelector("#option2");
@@ -107,7 +108,7 @@ const slNumbers = document.querySelectorAll(".slNumbers");
 // this array is for storing the answers
 let ansArray = new Array(quizDB.length - 1);
 
-// number of questions = number of sl numbers, questionlist = slList
+//! number of questions = number of sl numbers, questionlist = slList
 let slNo = 0;
 let sl = 0;
 let buttonBox = new Array(quizDB.length - 1);
@@ -130,7 +131,7 @@ let questionCount = 0;
 let answerCount = 0;
 let score = 0;
 
-// This function is for load next Question & Options
+//! This function is for load next Question & Options
 const loadQuestion = () => {
   const questionList = quizDB[questionCount];
 
@@ -153,10 +154,7 @@ const loadQuestion = () => {
 // function calling
 loadQuestion();
 
-
-
 //! Mark For Review
-
 let mrkArray = new Array(quizDB.length - 1);
 
 mfr.addEventListener("click", () => {
@@ -185,8 +183,7 @@ mfr.addEventListener("click", () => {
   }
 });
 
-// Mark for review Button value change 
-
+//! Mark for review Button value change 
 function buttonChange(){
   if(mrkArray[questionCount]==1)
   {
@@ -196,10 +193,6 @@ function buttonChange(){
     mfr.innerHTML = "Mark for Review";
   }
 }
-
-
-
-
 
 //! this function for get the checked answer's id and push the answer value
 const getCheckAnswer = () => {
@@ -213,20 +206,20 @@ const getCheckAnswer = () => {
   return answer;
 };
 
-// Array for storing answers temporarily
+//! Array for storing answers temporarily
 
 let temArray = new Array(quizDB.length - 1);
 
 
 
-// this function is for deselecting previous selection for each time
+//! this function is for deselecting previous selection for each time
 const deselectAll = () => {
   answers.forEach((currAnsElem) => {
     currAnsElem.checked = false;
   });
 };
 
-// for loading previous answers 
+//! for loading previous answers 
 function loadAnswer(){
   let ansId = temArray[questionCount];
   if(ansId == "ans1")
@@ -239,10 +232,9 @@ function loadAnswer(){
     document.querySelector("#ans4").checked = true;
 }
 
-// for  (>> next) button
+//! for  (>> next) button
 submit.addEventListener("click", function submittion() {
   back.style.display = "block";
-
   
   // if no answer is checked then turn it red else turn it green
   if(getCheckAnswer() == null && mrkArray[questionCount]!=1) {
@@ -264,14 +256,12 @@ submit.addEventListener("click", function submittion() {
     
   }
 
-
   const checkedAnswer = getCheckAnswer();
   if (checkedAnswer === quizDB[questionCount].ans) {
     score++;
   }
 
   // For storing previous selected values
-
   answers.forEach((curElem) =>{
     if(curElem.checked){
       temArray[questionCount] = curElem.id;
@@ -304,12 +294,8 @@ submit.addEventListener("click", function submittion() {
   buttonBox[questionCount].style.color = '#323232';
 });
 
-function colorFiller(){
 
-}
-
-
-// for  (<< previous) button
+//! for  (<< previous) button
 back.addEventListener("click", () => {
   const checkedAnswer = getCheckAnswer();
   if (checkedAnswer === quizDB[questionCount].ans) {
@@ -317,9 +303,6 @@ back.addEventListener("click", () => {
   }
 
   questionCount--;
-
-  
-  
 
   buttonBox[questionCount].style.background = "#DAF7A6 ";
   buttonBox[questionCount].style.color = '#323232';
@@ -335,24 +318,7 @@ back.addEventListener("click", () => {
     buttonBox[questionCount+1].style.background = "yellow";
     buttonBox[questionCount+1].style.color = "black";
   }
-  // else if(mrkArray[questionCount+1]==1)
-  // {
-  //   answers.forEach((currAnsElem) => {
-  //     if(currAnsElem.checked == true){
-  //       buttonBox[questionCount+1].style.background = "green";
-  //       buttonBox[questionCount+1].style.color = "white";
-  //       mrkArray[questionCount+1] = 0;
-  //       return;
-  //     }
-  //     else if(currAnsElem.checked != true)
-  //     {
-  //       buttonBox[questionCount+1].style.background = "yellow";
-  //       buttonBox[questionCount+1].style.color = "black";
-  //       return;
-  //     }
-  //   });
 
-  // }
   else{
     answers.forEach((currAnsElem) => {
       if(currAnsElem.checked == true){
@@ -377,14 +343,7 @@ back.addEventListener("click", () => {
 buttonBox[questionCount].style.background = "#DAF7A6 ";
 buttonBox[questionCount].style.color = '#323232';
 
-// Mark for review
-
-
-
-
-
-
-// ----- TIMER -----
+//! ----- TIMER -----
 // veriables
 const quizz = document.querySelector(".quizz");
 const mainContainer = document.querySelector(".main-container");
@@ -394,7 +353,7 @@ const text = document.querySelector(".text");
 // todo -> input(give allocated time)
 const hr = 0;
 const min = 0;
-const sec = 2000;
+const sec = 10;
 
 const hours = hr * 36000000;
 const minutes = min * 60000;
@@ -487,7 +446,6 @@ function myFunction(x) {
 function menuclose(){
   closBtn.click();
 } 
-
 
 function myFunction2(y) {
   if (y.matches) { // If media query matches
