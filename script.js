@@ -90,6 +90,24 @@ const quizDB = [
     d: "Itna Accha Scooty",
     ans: "ans2",
   },
+  {
+    qid: "11",
+    question: "Q1: What is the fullform of HTML?",
+    a: "Hi Text Markup Law",
+    b: "Hello To My Land",
+    c: "HyperText Markup Language",
+    d: "Hypertext Markup Language",
+    ans: "ans4",
+  },
+  {
+    qid: "12",
+    question: "Q2: What is the fullform of CSS?",
+    a: "Cascading Style Sheets",
+    b: "Cascading Style Sheep",
+    c: "Cartoon Style Sheets",
+    d: "Cascading Super Sheets",
+    ans: "ans1",
+  },
 ];
 
 //! Get all structured element & store it into a veriable
@@ -353,7 +371,7 @@ const text = document.querySelector(".text");
 // todo -> input(give allocated time)
 const hr = 0;
 const min = 0;
-const sec = 10;
+const sec = 20;
 
 const hours = hr * 36000000;
 const minutes = min * 60000;

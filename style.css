@@ -155,11 +155,16 @@ input, .inner-div li label  {
     margin-right: 2rem;
 }
 
+.inner-div li{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
 input {
     /* appearance: none; */
     width: 2.5rem;
     height: 2.5rem;
-    accent-color: hwb(284 18% 0% / 0.309);;
+    accent-color: hwb(284 18% 0% / 0.309);
 }
 
 #back {
@@ -169,7 +174,7 @@ input {
 #slBox {
     display: flex;
     flex-wrap: wrap;
-    width: 20rem;
+    width: 23rem;
     justify-content: center;
     margin-top: 4rem;
     margin-bottom: 3rem;
@@ -330,7 +335,7 @@ input {
 }
 
 .left-sidebar {
-    height:100vh;
+    height:115vh;
     max-width: 35vw;
     padding: 2rem;
     background-color: var(--background-color-nav);
@@ -367,6 +372,7 @@ input {
 } /* close button */
 
 .btnTwo {
+    margin-top: 8rem;
     position: relative;
     width: 100%;
 }
@@ -376,6 +382,19 @@ input {
     margin-right: 1rem;
 }
 
+/* strt box */
+.strt-box {
+    padding: 3rem;
+    margin: 2rem;
+    background-color: #96cdf8;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    margin-top: 9rem;
+}
+
+/* Media Queries */
 @media (max-width: 2000px) {
     .btnTwo label i {
         display: none;
@@ -419,6 +438,10 @@ input {
         animation: up-opening;
     }
 
+    .btnTwo {
+        margin-top: 2rem;
+    }
+
     .menuBtn {
         display: inline-block;
     }
@@ -436,7 +459,7 @@ input {
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 626px) {
     .nav-bar {
         flex-wrap: wrap;
         justify-content: space-evenly;
@@ -452,10 +475,10 @@ input {
     .timer-container {
         height: 5rem;
     }
-    /* .quizz {
+    .quizz {
         margin: 1rem;
         padding: 1rem;
-    } */
+    }
     .inner-div {
         min-width: 0;
         padding: 3rem;
@@ -484,14 +507,6 @@ input {
         width: auto;
         justify-content: center;
     }
-    .quizz {
-        padding: 2.5rem;
-    }
-/* 
-    div.quizz {
-        margin-top: 5rem;
-    } */
-
     .nav-bar {
         padding: 0;
     }
