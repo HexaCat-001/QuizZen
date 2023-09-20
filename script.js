@@ -122,6 +122,19 @@ const back = document.querySelector("#back");
 const answers = document.querySelectorAll(".answer");
 const showScore = document.querySelector("#showScore");
 const slNumbers = document.querySelectorAll(".slNumbers");
+const startButton = document.querySelector("#startBTN");
+const startDisplay = document.querySelector("#displayStart");
+const quizBox = document.querySelector(".quizz");
+const body = document.querySelector("body")
+const leftSidebar = document.querySelector(".left-sidebar");
+const navBar = document.querySelector(".nav-bar")
+
+startButton.addEventListener('click',() => {
+  startDisplay.style.display = "none";
+  quizBox.style.display = "grid";
+  window.scrollTo(0,0);
+  leftSidebar.style.height = "95vh"
+})
 
 // this array is for storing the answers
 let ansArray = new Array(quizDB.length - 1);
@@ -468,6 +481,7 @@ function menuclose(){
 function myFunction2(y) {
   if (y.matches) { // If media query matches
     closBtn.click();
+    leftSidebar.style.height = "auto"
   }
   else {}
 }

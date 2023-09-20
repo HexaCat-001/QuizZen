@@ -110,7 +110,7 @@ nav input {
 .quizz {
     max-width: 100vw;
     height: 50vh;
-    display: grid;
+    display: none;
     place-items: center;
     padding: 5rem;
     background-color: rgb(255, 255, 255);
@@ -335,7 +335,7 @@ input {
 }
 
 .left-sidebar {
-    height:115vh;
+    height:134vh;
     max-width: 35vw;
     padding: 2rem;
     background-color: var(--background-color-nav);
@@ -391,7 +391,70 @@ input {
     display: flex;
     flex-direction: column;
     border-radius: 1rem;
-    margin-top: 9rem;
+    margin-top: 2rem;
+}
+.display-box {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    padding: 1.9rem 2rem;
+    margin: 2rem 6rem;
+    width: 95%;
+    color: #323232;
+    align-items: center;
+    box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
+}
+.display-box-heading {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.display-box-span {
+    font-weight: 900;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.display-box-input {
+    font-weight: 700;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 20vw;
+    padding: 1rem;
+    font-size: 2rem;
+    overflow: auto;
+    outline: none;
+    border-radius: 0.8rem;
+    text-align: center;
+}
+.display-box-button {
+    color: #323232;
+    padding: 2rem 2.8rem;
+    font-weight: 700;
+    display: flex;
+    font-size: 3rem;
+    flex-wrap: nowrap;
+    border-radius: 1rem;
+    outline: none;
+    border: none;
+    margin: 2rem;
+    box-shadow: 0 1rem 1rem -0.7rem rgba(0, 0, 0, 0.4);
+    transition: ease-in-out 0.2s;
+}
+.display-box-button:hover {
+    background-color: #f6e3e3;
+    color: #444444;
+    position: static;
+    border-width: 1px;
+    transform: scaleX(1.1);
+}
+.dbox-heading {
+    text-align: center;
+    font-size: 4rem;
+    color: #323232;
+    display: flex;
+    margin-top: 4rem;
+    justify-content: center;
 }
 
 /* Media Queries */
@@ -440,7 +503,7 @@ input {
     }
 
     .btnTwo {
-        margin-top: 1rem;
+        margin-top: 3rem;
     }
 
     .menuBtn {
