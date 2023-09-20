@@ -446,7 +446,7 @@ input {
     color: #444444;
     position: static;
     border-width: 1px;
-    transform: scaleX(1.1);
+    transform: scaleX(1.1) !important;
 }
 .dbox-heading {
     text-align: center;
