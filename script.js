@@ -133,7 +133,11 @@ startButton.addEventListener('click',() => {
   startDisplay.style.display = "none";
   quizBox.style.display = "grid";
   window.scrollTo(0,0);
-  leftSidebar.style.height = "95vh"
+  leftSidebar.style.height = "113vh"
+  body.style.overflow = "hidden";
+  if (window.matchMedia("(max-width: 967px)")) {
+    body.style.overflow = "auto";
+  }
 })
 
 // this array is for storing the answers
@@ -384,7 +388,7 @@ const text = document.querySelector(".text");
 // todo -> input(give allocated time)
 const hr = 0;
 const min = 0;
-const sec = 20;
+const sec = 50;
 
 const hours = hr * 36000000;
 const minutes = min * 60000;
@@ -470,6 +474,7 @@ $('.answer').dblclick(function(){
 function myFunction(x) {
   if (x.matches) { // If media query matches
     menuBar.click();
+    leftSidebar.style.height = "134vh"
   }
   else {}
 }

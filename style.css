@@ -335,7 +335,7 @@ input {
 }
 
 .left-sidebar {
-    height:134vh;
+    height:123vh;
     max-width: 35vw;
     padding: 2rem;
     background-color: var(--background-color-nav);
@@ -454,6 +454,7 @@ input {
     color: #323232;
     display: flex;
     margin-top: 4rem;
+    padding: 1rem;
     justify-content: center;
 }
 
@@ -474,6 +475,7 @@ input {
 @media (min-width: 969px) {
     .left-sidebar {
         display: flex;
+        height: 139vh !important;
     }
     .btnTwo label i {
         display: none;
@@ -502,6 +504,10 @@ input {
         animation: up-opening;
     }
 
+    #menubar-heading {
+        margin-left: 5rem;
+    }
+
     .btnTwo {
         margin-top: 3rem;
     }
@@ -519,7 +525,8 @@ input {
     }
 
     div.quizz {
-        margin-top: 2rem;
+        margin-top: 1.5rem;
+        padding-top: 0.9rem;
     }
 }
 
