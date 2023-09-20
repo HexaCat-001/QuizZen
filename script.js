@@ -125,20 +125,55 @@ const slNumbers = document.querySelectorAll(".slNumbers");
 const startButton = document.querySelector("#startBTN");
 const startDisplay = document.querySelector("#displayStart");
 const quizBox = document.querySelector(".quizz");
-const body = document.querySelector("body")
+const body = document.querySelector("body");
 const leftSidebar = document.querySelector(".left-sidebar");
-const navBar = document.querySelector(".nav-bar")
+const navBar = document.querySelector(".nav-bar");
 
-startButton.addEventListener('click',() => {
+// when start button click
+startButton.addEventListener("click", () => {
+  // fulscreen
+  body.requestFullscreen().catch((err) => {
+    alert(
+      `Error attempting to enable fullscreen mode: ${err.message} (${err.name})`
+    );
+  });
   startDisplay.style.display = "none";
+  // display quizbox
   quizBox.style.display = "grid";
-  window.scrollTo(0,0);
-  leftSidebar.style.height = "113vh"
+  // sctollto top
+  window.scrollTo(0, 0);
+  // set left sidebar height
+  leftSidebar.style.height = "113vh";
+
   body.style.overflow = "hidden";
+
   if (window.matchMedia("(max-width: 967px)")) {
     body.style.overflow = "auto";
   }
-})
+
+  // prevent keypress event
+  jQuery(document).keydown(function (e) {
+    if (e.which === 27||91||92||122) {
+      e.preventDefault();
+      return;
+    }
+    console.log(e.which);
+  });
+  // Start Timer
+  const timerLoop = setInterval(countDownTimer, 0);
+  //! when exit full screen submit all questions autometically
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      if (document.fullscreenEnabled) {
+        for (let i = 0; i < quizDB.length; i++) {
+          submit.click();
+        }
+        clearInterval(timerLoop);
+      }
+    }
+  });
+
+});
 
 // this array is for storing the answers
 let ansArray = new Array(quizDB.length - 1);
@@ -178,13 +213,17 @@ const loadQuestion = () => {
   option4.innerText = questionList.d;
   // back.style.display = 'none';
 
-  // ! checked the previously checked option if any 
+  // ! checked the previously checked option if any
   answers.forEach((curAnsElem) => {
-    if (ansArray[questionCount] == option1.tagName ||ansArray[questionCount] == option2.tagName ||ansArray[questionCount] == option3.tagName ||ansArray[questionCount] == option4.tagName) {
-      curAnsElem.checked
+    if (
+      ansArray[questionCount] == option1.tagName ||
+      ansArray[questionCount] == option2.tagName ||
+      ansArray[questionCount] == option3.tagName ||
+      ansArray[questionCount] == option4.tagName
+    ) {
+      curAnsElem.checked;
     }
   });
-
 };
 // function calling
 loadQuestion();
@@ -193,24 +232,21 @@ loadQuestion();
 let mrkArray = new Array(quizDB.length - 1);
 
 mfr.addEventListener("click", () => {
-  if(mrkArray[questionCount] == 1)
-  {
+  if (mrkArray[questionCount] == 1) {
     mrkArray[questionCount] = 0;
-    if(getCheckAnswer() == null && mrkArray[questionCount]!=1) {
+    if (getCheckAnswer() == null && mrkArray[questionCount] != 1) {
       buttonBox[questionCount].style.background = "red";
       buttonBox[questionCount].style.color = "white";
-    }
-    else{
+    } else {
       answers.forEach((currAnsElem) => {
-        if(currAnsElem.checked == true){
+        if (currAnsElem.checked == true) {
           buttonBox[questionCount].style.background = "green";
-          buttonBox[questionCount].style.color = "white";  
+          buttonBox[questionCount].style.color = "white";
         }
       });
     }
     mfr.innerHTML = "Mark for Review";
-  }
-  else{
+  } else {
     mrkArray[questionCount] = 1;
     buttonBox[questionCount].style.background = "yellow";
     buttonBox[questionCount].style.color = "black";
@@ -218,13 +254,11 @@ mfr.addEventListener("click", () => {
   }
 });
 
-//! Mark for review Button value change 
-function buttonChange(){
-  if(mrkArray[questionCount]==1)
-  {
+//! Mark for review Button value change
+function buttonChange() {
+  if (mrkArray[questionCount] == 1) {
     mfr.innerHTML = "Unmark";
-  }
-  else{
+  } else {
     mfr.innerHTML = "Mark for Review";
   }
 }
@@ -234,7 +268,7 @@ const getCheckAnswer = () => {
   let answer;
   answers.forEach((curAnsElem) => {
     if (curAnsElem.checked) {
-      answer= curAnsElem.id;
+      answer = curAnsElem.id;
       ansArray.push(curAnsElem.id);
     }
   });
@@ -245,8 +279,6 @@ const getCheckAnswer = () => {
 
 let temArray = new Array(quizDB.length - 1);
 
-
-
 //! this function is for deselecting previous selection for each time
 const deselectAll = () => {
   answers.forEach((currAnsElem) => {
@@ -254,41 +286,33 @@ const deselectAll = () => {
   });
 };
 
-//! for loading previous answers 
-function loadAnswer(){
+//! for loading previous answers
+function loadAnswer() {
   let ansId = temArray[questionCount];
-  if(ansId == "ans1")
-    document.querySelector("#ans1").checked = true;
-  else if(ansId == "ans2")
-    document.querySelector("#ans2").checked = true;
-  else if(ansId == "ans3")
-    document.querySelector("#ans3").checked = true;
-  else if(ansId == "ans4")
-    document.querySelector("#ans4").checked = true;
+  if (ansId == "ans1") document.querySelector("#ans1").checked = true;
+  else if (ansId == "ans2") document.querySelector("#ans2").checked = true;
+  else if (ansId == "ans3") document.querySelector("#ans3").checked = true;
+  else if (ansId == "ans4") document.querySelector("#ans4").checked = true;
 }
 
 //! for  (>> next) button
 submit.addEventListener("click", function submittion() {
   back.style.display = "block";
-  
+
   // if no answer is checked then turn it red else turn it green
-  if(getCheckAnswer() == null && mrkArray[questionCount]!=1) {
+  if (getCheckAnswer() == null && mrkArray[questionCount] != 1) {
     buttonBox[questionCount].style.background = "red";
     buttonBox[questionCount].style.color = "white";
-  }
-  else if(mrkArray[questionCount]==1)
-  {
+  } else if (mrkArray[questionCount] == 1) {
     buttonBox[questionCount].style.background = "yellow";
     buttonBox[questionCount].style.color = "black";
-  }
-  else{
+  } else {
     answers.forEach((currAnsElem) => {
-      if(currAnsElem.checked == true){
+      if (currAnsElem.checked == true) {
         buttonBox[questionCount].style.background = "green";
-        buttonBox[questionCount].style.color = "white";  
+        buttonBox[questionCount].style.color = "white";
       }
     });
-    
   }
 
   const checkedAnswer = getCheckAnswer();
@@ -297,22 +321,21 @@ submit.addEventListener("click", function submittion() {
   }
 
   // For storing previous selected values
-  answers.forEach((curElem) =>{
-    if(curElem.checked){
+  answers.forEach((curElem) => {
+    if (curElem.checked) {
       temArray[questionCount] = curElem.id;
     }
   });
-  
+
   questionCount++;
-  
+
   deselectAll();
 
   if (questionCount < quizDB.length) {
     loadQuestion();
     loadAnswer();
     buttonChange();
-  } 
-  else {
+  } else {
     showScore.innerHTML = `
             <h3> You Scored: ${score}/${quizDB.length} <h3>
             <button class="btn" onclick="location.reload()">Play Again</button>
@@ -322,13 +345,11 @@ submit.addEventListener("click", function submittion() {
     back.style.display = "none";
     submit.style.display = "none";
     mfr.style.display = "none";
-    clearInterval(timerLoop);
-
+    // clearTimerLoop();
   }
   buttonBox[questionCount].style.background = "#DAF7A6";
-  buttonBox[questionCount].style.color = '#323232';
+  buttonBox[questionCount].style.color = "#323232";
 });
-
 
 //! for  (<< previous) button
 back.addEventListener("click", () => {
@@ -340,25 +361,20 @@ back.addEventListener("click", () => {
   questionCount--;
 
   buttonBox[questionCount].style.background = "#DAF7A6 ";
-  buttonBox[questionCount].style.color = '#323232';
+  buttonBox[questionCount].style.color = "#323232";
 
-  
   // if no answer is checked then turn it red else turn it green
-  if(getCheckAnswer() == null && mrkArray[questionCount+1]!=1) {
-    buttonBox[questionCount+1].style.background = "red";
-    buttonBox[questionCount+1].style.color = "white";
-  }
-  else if(mrkArray[questionCount+1]==1)
-  {
-    buttonBox[questionCount+1].style.background = "yellow";
-    buttonBox[questionCount+1].style.color = "black";
-  }
-
-  else{
+  if (getCheckAnswer() == null && mrkArray[questionCount + 1] != 1) {
+    buttonBox[questionCount + 1].style.background = "red";
+    buttonBox[questionCount + 1].style.color = "white";
+  } else if (mrkArray[questionCount + 1] == 1) {
+    buttonBox[questionCount + 1].style.background = "yellow";
+    buttonBox[questionCount + 1].style.color = "black";
+  } else {
     answers.forEach((currAnsElem) => {
-      if(currAnsElem.checked == true){
-        buttonBox[questionCount+1].style.background = "green";
-        buttonBox[questionCount+1].style.color = "white"; 
+      if (currAnsElem.checked == true) {
+        buttonBox[questionCount + 1].style.background = "green";
+        buttonBox[questionCount + 1].style.color = "white";
       }
     });
   }
@@ -376,7 +392,7 @@ back.addEventListener("click", () => {
 
 // current option highlight
 buttonBox[questionCount].style.background = "#DAF7A6 ";
-buttonBox[questionCount].style.color = '#323232';
+buttonBox[questionCount].style.color = "#323232";
 
 //! ----- TIMER -----
 // veriables
@@ -388,7 +404,7 @@ const text = document.querySelector(".text");
 // todo -> input(give allocated time)
 const hr = 0;
 const min = 0;
-const sec = 50;
+const sec = 20;
 
 const hours = hr * 36000000;
 const minutes = min * 60000;
@@ -398,7 +414,13 @@ const startTime = Date.now(); // The Date.now() static method returns the number
 const futureTime = startTime + setTime; // present miliseconds + total allocated miliseconds
 
 // loop
-const timerLoop = setInterval(countDownTimer, 0);
+const timerLoop = () => {
+  return setInterval(countDownTimer, 0);
+};
+
+// const clearTimerLoop = (timerLoop) => {
+//   clearInterval(timerLoop)
+// }
 
 function countDownTimer() {
   const currentTime = Date.now(); // The Date.now() static method returns the number of milliseconds elapsed since the epoch, which is defined as the midnight at the beginning of January 1, 1970, UTC.
@@ -417,7 +439,6 @@ function countDownTimer() {
     <div>${sec}</div>
     `;
   text.style.display = "none";
-
 
   // end
   if (remainingTime < 0) {
@@ -441,54 +462,54 @@ function countDownTimer() {
 }
 
 // menu bar (= / x) & cross button
-const menuBar = document.querySelector('#menu_bar');
-const closBtn = document.querySelector('#close_btn');
-const left_sideBar = document.querySelector('.left-sidebar');
+const menuBar = document.querySelector("#menu_bar");
+const closBtn = document.querySelector("#close_btn");
+const left_sideBar = document.querySelector(".left-sidebar");
 
-menuBar.addEventListener('click',()=> {
-  if(left_sideBar.style.display == "flex"){
+menuBar.addEventListener("click", () => {
+  if (left_sideBar.style.display == "flex") {
     // left_sideBar.style.display ="none" ;
-  }else{
-    left_sideBar.style.display ="flex" ;
+  } else {
+    left_sideBar.style.display = "flex";
   }
 });
 
-menuBar.addEventListener('dblclick',()=>{
-    left_sideBar.style.display ="none" ;
-})
-
-closBtn.addEventListener('click',()=> {
+menuBar.addEventListener("dblclick", () => {
   left_sideBar.style.display = "none";
 });
 
+closBtn.addEventListener("click", () => {
+  left_sideBar.style.display = "none";
+});
 
 // input button uncheck
-$('.answer').dblclick(function(){
-  if($(this).is('checked'))
-  {
-      $(this).removeAttr('checked');
+$(".answer").dblclick(function () {
+  if ($(this).is("checked")) {
+    $(this).removeAttr("checked");
   }
 });
 
 // click menu button at 968 px width & click close button at 967px
 function myFunction(x) {
-  if (x.matches) { // If media query matches
+  if (x.matches) {
+    // If media query matches
     menuBar.click();
-    leftSidebar.style.height = "134vh"
+    leftSidebar.style.height = "134vh";
+  } else {
   }
-  else {}
 }
 
-function menuclose(){
+function menuclose() {
   closBtn.click();
-} 
+}
 
 function myFunction2(y) {
-  if (y.matches) { // If media query matches
+  if (y.matches) {
+    // If media query matches
     closBtn.click();
-    leftSidebar.style.height = "auto"
+    leftSidebar.style.height = "auto";
+  } else {
   }
-  else {}
 }
 
 let x = window.matchMedia("(min-width: 968px)");
@@ -497,11 +518,9 @@ let y = window.matchMedia("(max-width: 967px)");
 myFunction2(y);
 myFunction(x);
 
+x.addEventListener("change", myFunction);
+y.addEventListener("change", myFunction2);
 
-x.addEventListener('change',myFunction);
-y.addEventListener('change',myFunction2);
-
-
-setInterval(myFunction(x,y) , 200);
-let specificWidth =[x,y]
-specificWidth.addEventListener('change',myFunction)
+setInterval(myFunction(x, y), 200);
+let specificWidth = [x, y];
+specificWidth.addEventListener("change", myFunction);

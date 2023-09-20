@@ -480,6 +480,9 @@ input {
     .btnTwo label i {
         display: none;
     }
+    .timer-container {
+        margin-right: 1rem;
+    }
 }
 
 @media (max-width: 968px) {
