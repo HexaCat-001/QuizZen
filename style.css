@@ -432,6 +432,7 @@ input {
         margin-bottom: 7rem;
         border-radius: 10px;
         position: absolute;
+        z-index: 99;
         top: 0;
         margin-top: 15vh;
         opacity: 0.9;
@@ -439,7 +440,7 @@ input {
     }
 
     .btnTwo {
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
 
     .menuBtn {
