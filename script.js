@@ -128,6 +128,7 @@ const quizBox = document.querySelector(".quizz");
 const body = document.querySelector("body");
 const leftSidebar = document.querySelector(".left-sidebar");
 const navBar = document.querySelector(".nav-bar");
+const heading =document.querySelector(".dbox-heading");
 
 // when start button click
 startButton.addEventListener("click", () => {
@@ -137,6 +138,9 @@ startButton.addEventListener("click", () => {
       `Error attempting to enable fullscreen mode: ${err.message} (${err.name})`
     );
   });
+  // heading
+  heading.style.display = "none";
+  // startbox
   startDisplay.style.display = "none";
   // display quizbox
   quizBox.style.display = "grid";
@@ -147,9 +151,9 @@ startButton.addEventListener("click", () => {
 
   body.style.overflow = "hidden";
 
-  if (window.matchMedia("(max-width: 967px)")) {
-    body.style.overflow = "auto";
-  }
+  // if (window.matchMedia("(max-width: 967px)")) {
+  //   body.style.overflow = "auto";
+  // }
 
   // prevent keypress event
   jQuery(document).keydown(function (e) {
@@ -160,7 +164,7 @@ startButton.addEventListener("click", () => {
     console.log(e.which);
   });
   // Start Timer
-  const timerLoop = setInterval(countDownTimer, 0);
+  // const timerLoop = setInterval(countDownTimer, 0);
   //! when exit full screen submit all questions autometically
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
