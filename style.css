@@ -84,6 +84,7 @@ html,body {
     padding-left: 2.5rem;
     color: var(--text-color-nav);
     animation: nav-bar-opening 0.7s;
+    width: 100vw !important;
 }
 
 .nav-list {
@@ -295,6 +296,7 @@ input {
 
 .main-container {
     background-color: transparent;
+    padding-right: 1.9rem;
 }
 
 .timer-container {
@@ -386,6 +388,12 @@ input {
     display: none;
     margin-right: 1rem;
 }
+/* middle container */
+.middle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 /* strt box */
 .strt-box {
@@ -397,6 +405,8 @@ input {
     flex-direction: column;
     border-radius: 1rem;
     margin-top: 2rem;
+    width: auto;
+    overflow: hidden;
 }
 .display-box {
     display: flex;
@@ -413,7 +423,7 @@ input {
 }
 .display-box-heading {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap !important;
 }
 .display-box-span {
     font-weight: 900;
@@ -459,7 +469,7 @@ input {
     color: #323232;
     display: flex;
     margin-top: 4rem;
-    padding: 1rem;
+    padding: 1.8rem;
     justify-content: center;
 }
 
@@ -541,11 +551,11 @@ input {
 @media (max-width: 626px) {
     .nav-bar {
         flex-wrap: wrap;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
         height: auto;
         padding: 01rem 0;
-        width: 100vw;
+        width:100vw;
     }
     .logo {
         font-size: 5rem;
@@ -571,9 +581,12 @@ input {
     /* div.quizz {
         margin-top: 4rem;
     } */
+    .display-box-span {
+        display: none;
+    }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 550px) {
     .left-sidebar {
         height:auto;
         margin: 3rem 10rem;
@@ -587,6 +600,6 @@ input {
         justify-content: center;
     }
     .nav-bar {
-        padding: 0;
+        width: 100% !important;
     }
 }
