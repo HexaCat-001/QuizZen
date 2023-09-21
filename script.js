@@ -172,7 +172,7 @@ startButton.addEventListener("click", () => {
   // sctollto top
   window.scrollTo(0, 0);
   // set left sidebar height
-  leftSidebar.style.height = "113vh";
+  // leftSidebar.style.height = "113vh";
   // overflow hhidden
   body.style.overflow = "hidden";
   // prevent keypress event
