@@ -5,6 +5,11 @@
     box-sizing: 0;
 }
  
+*::selection {
+    background-color: #323232;
+    color: #96cdf8;
+}
+
 html,body {
     font-size: 10px;
     width: 100%;
@@ -528,7 +533,7 @@ input {
     }
 
     div.quizz {
-        margin-top: 1.5rem;
+        margin-top: 4.5rem;
         padding-top: 0.9rem;
     }
 }

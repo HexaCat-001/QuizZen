@@ -128,16 +128,41 @@ const quizBox = document.querySelector(".quizz");
 const body = document.querySelector("body");
 const leftSidebar = document.querySelector(".left-sidebar");
 const navBar = document.querySelector(".nav-bar");
-const heading =document.querySelector(".dbox-heading");
+const heading = document.querySelector(".dbox-heading");
+const quizz = document.querySelector(".quizz");
+const mainContainer = document.querySelector(".main-container");
+const timer = document.querySelector(".timer");
+const text = document.querySelector(".text");
+let elem = body;
+// todo -> input(give allocated time)
+const hr = 0;
+const min = 0;
+const sec = 20;
 
-// when start button click
+// heading animated
+let typedHeading = new Typed(".dbox-heading",{
+  strings: ["Go through the documents carefully before Starting!!"],
+  loop:false,
+  typeSpeed: 19
+})
+
+
+//! when start button click
 startButton.addEventListener("click", () => {
-  // fulscreen
-  body.requestFullscreen().catch((err) => {
-    alert(
-      `Error attempting to enable fullscreen mode: ${err.message} (${err.name})`
-    );
-  });
+  // fullscreen
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen().catch((err) => {
+      alert(
+        `Error attempting to enable fullscreen mode: ${err.message} (${err.name})`
+      );
+    });
+  } else if (elem.webkitRequestFullscreen) {
+    /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    /* IE11 */
+    elem.msRequestFullscreen();
+  }
   // heading
   heading.style.display = "none";
   // startbox
@@ -148,24 +173,19 @@ startButton.addEventListener("click", () => {
   window.scrollTo(0, 0);
   // set left sidebar height
   leftSidebar.style.height = "113vh";
-
+  // overflow hhidden
   body.style.overflow = "hidden";
-
-  // if (window.matchMedia("(max-width: 967px)")) {
-  //   body.style.overflow = "auto";
-  // }
-
   // prevent keypress event
-  jQuery(document).keydown(function (e) {
-    if (e.which === 27||91||92||122) {
-      e.preventDefault();
-      return;
-    }
-    console.log(e.which);
-  });
-  // Start Timer
-  // const timerLoop = setInterval(countDownTimer, 0);
-  //! when exit full screen submit all questions autometically
+  // jQuery(document).keydown(function (e) {
+  //   if (e.which === 27 || 91 || 92 || 122) {
+  //     e.preventDefault();
+  //     return;
+  //   }
+  //   console.log(e.which);
+  // });
+  // start timer
+  const timerLoop = setInterval(countDownTimer, 0);
+  // when exit full screen submit all questions autometically
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       if (document.fullscreenEnabled) {
@@ -176,7 +196,53 @@ startButton.addEventListener("click", () => {
       }
     }
   });
+  // ! Timer process Start
+  const hours = hr * 36000000;
+  const minutes = min * 60000;
+  const seconds = sec * 1000;
+  const setTime = hours + minutes + seconds; // total allocated time in miliseconds
+  const startTime = Date.now(); // The Date.now() static method returns the number of milliseconds elapsed since the epoch, which is defined as the midnight at the beginning of January 1, 1970, UTC.
+  const futureTime = startTime + setTime; // present miliseconds + total allocated miliseconds
 
+  function countDownTimer() {
+    const currentTime = Date.now(); // The Date.now() static method returns the number of milliseconds elapsed since the epoch, which is defined as the midnight at the beginning of January 1, 1970, UTC.
+    const remainingTime = futureTime - currentTime;
+
+    // timer
+    const hrs = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
+    const min = Math.floor((remainingTime / (1000 * 60)) % 60);
+    const sec = Math.floor((remainingTime / 1000) % 60);
+
+    timer.innerHTML = `
+    <div>${hrs}</div>
+    <div class="colon">:</div>
+    <div>${min}</div>
+    <div class="colon">:</div>
+    <div>${sec}</div>
+    `;
+    text.style.display = "none";
+
+    // end
+    if (remainingTime < 0) {
+      clearInterval(timerLoop); // stop setInterval() / progress bar
+
+      timer.innerHTML = `
+        <div>00</div>
+        <div class="colon">:</div>
+        <div>00</div>
+        <div class="colon">:</div>
+        <div>00</div>
+        `;
+
+      // submit the quizz by pressing submit button
+      for (let i = 0; i <= quizDB.length + 1; i++) {
+        submit.click();
+        back.style.display = "none";
+      }
+      // quizz.style.margintop = "-10rem";
+    }
+  }
+  // ! Timer process End
 });
 
 // this array is for storing the answers
@@ -206,7 +272,7 @@ let answerCount = 0;
 let score = 0;
 
 //! This function is for load next Question & Options
-const loadQuestion = () => {
+const loadQuestion = (num) => {
   const questionList = quizDB[questionCount];
 
   question.innerText = questionList.question;
@@ -342,14 +408,13 @@ submit.addEventListener("click", function submittion() {
   } else {
     showScore.innerHTML = `
             <h3> You Scored: ${score}/${quizDB.length} <h3>
-            <button class="btn" onclick="location.reload()">Play Again</button>
+            <button class="btn" onclick="location.reload()">Exit Now</button>
             `;
     // location.reload() is an inbuild function to reload pages..
     showScore.classList.remove("score-area");
     back.style.display = "none";
     submit.style.display = "none";
     mfr.style.display = "none";
-    // clearTimerLoop();
   }
   buttonBox[questionCount].style.background = "#DAF7A6";
   buttonBox[questionCount].style.color = "#323232";
@@ -397,73 +462,6 @@ back.addEventListener("click", () => {
 // current option highlight
 buttonBox[questionCount].style.background = "#DAF7A6 ";
 buttonBox[questionCount].style.color = "#323232";
-
-//! ----- TIMER -----
-// veriables
-const quizz = document.querySelector(".quizz");
-const mainContainer = document.querySelector(".main-container");
-const timer = document.querySelector(".timer");
-const text = document.querySelector(".text");
-
-// todo -> input(give allocated time)
-const hr = 0;
-const min = 0;
-const sec = 20;
-
-const hours = hr * 36000000;
-const minutes = min * 60000;
-const seconds = sec * 1000;
-const setTime = hours + minutes + seconds; // total allocated time in miliseconds
-const startTime = Date.now(); // The Date.now() static method returns the number of milliseconds elapsed since the epoch, which is defined as the midnight at the beginning of January 1, 1970, UTC.
-const futureTime = startTime + setTime; // present miliseconds + total allocated miliseconds
-
-// loop
-const timerLoop = () => {
-  return setInterval(countDownTimer, 0);
-};
-
-// const clearTimerLoop = (timerLoop) => {
-//   clearInterval(timerLoop)
-// }
-
-function countDownTimer() {
-  const currentTime = Date.now(); // The Date.now() static method returns the number of milliseconds elapsed since the epoch, which is defined as the midnight at the beginning of January 1, 1970, UTC.
-  const remainingTime = futureTime - currentTime;
-
-  // timer
-  const hrs = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
-  const min = Math.floor((remainingTime / (1000 * 60)) % 60);
-  const sec = Math.floor((remainingTime / 1000) % 60);
-
-  timer.innerHTML = `
-    <div>${hrs}</div>
-    <div class="colon">:</div>
-    <div>${min}</div>
-    <div class="colon">:</div>
-    <div>${sec}</div>
-    `;
-  text.style.display = "none";
-
-  // end
-  if (remainingTime < 0) {
-    clearInterval(timerLoop); // stop setInterval() / progress bar
-
-    timer.innerHTML = `
-        <div>00</div>
-        <div class="colon">:</div>
-        <div>00</div>
-        <div class="colon">:</div>
-        <div>00</div>
-        `;
-
-    // submit the quizz by pressing submit button
-    for (let i = 0; i <= quizDB.length + 1; i++) {
-      submit.click();
-      back.style.display = "none";
-    }
-    // quizz.style.margintop = "-10rem";
-  }
-}
 
 // menu bar (= / x) & cross button
 const menuBar = document.querySelector("#menu_bar");
