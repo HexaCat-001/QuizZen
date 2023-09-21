@@ -602,4 +602,7 @@ input {
     .nav-bar {
         width: 100% !important;
     }
+    .display-box {
+        flex-wrap: wrap !important;
+    }
 }
