@@ -174,7 +174,7 @@ startButton.addEventListener("click", () => {
   // set left sidebar height
   // leftSidebar.style.height = "113vh";
   // overflow hhidden
-  body.style.overflow = "hidden";
+  // body.style.overflow = "hidden";
   // prevent keypress event
   // jQuery(document).keydown(function (e) {
   //   if (e.which === 27 || 91 || 92 || 122) {

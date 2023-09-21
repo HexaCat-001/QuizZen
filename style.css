@@ -602,4 +602,14 @@ input {
     .nav-bar {
         width: 100% !important;
     }
+    .display-box {
+        flex-wrap: wrap !important;
+        flex-direction: column;
+        margin: 1rem 0;
+    }
+    .dbox-heading {
+        font-size: 3rem;
+        margin-top: 1rem;
+        padding: auto;
+    }
 }
