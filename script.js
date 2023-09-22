@@ -136,8 +136,8 @@ const text = document.querySelector(".text");
 let elem = body;
 // todo -> input(give allocated time)
 const hr = 0;
-const min = 0;
-const sec = 20;
+const min = 5;
+const sec = 0;
 
 // heading animated
 let typedHeading = new Typed(".dbox-heading",{
@@ -171,10 +171,11 @@ startButton.addEventListener("click", () => {
   quizBox.style.display = "grid";
   // sctollto top
   window.scrollTo(0, 0);
+
   // set left sidebar height
   // leftSidebar.style.height = "113vh";
   // overflow hhidden
-  // body.style.overflow = "hidden";
+  body.style.overflow = "auto";
   // prevent keypress event
   // jQuery(document).keydown(function (e) {
   //   if (e.which === 27 || 91 || 92 || 122) {
