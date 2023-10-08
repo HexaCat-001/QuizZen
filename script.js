@@ -92,7 +92,7 @@ const quizDB = [
   },
   {
     qid: "11",
-    question: "Q1: What is the fullform of HTML?",
+    question: "Q11: What is the fullform of HTML?",
     a: "Hi Text Markup Law",
     b: "Hello To My Land",
     c: "HyperText Markup Language",
@@ -101,7 +101,7 @@ const quizDB = [
   },
   {
     qid: "12",
-    question: "Q2: What is the fullform of CSS?",
+    question: "Q12: What is the fullform of CSS?",
     a: "Cascading Style Sheets",
     b: "Cascading Style Sheep",
     c: "Cartoon Style Sheets",
