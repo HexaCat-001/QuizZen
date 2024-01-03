@@ -145,7 +145,7 @@ let typedHeading = new Typed(".dbox-heading",{
   loop:false,
   typeSpeed: 19
 })
-
+window.scrollTo(0, 0);
 
 //! when start button click
 startButton.addEventListener("click", () => {
