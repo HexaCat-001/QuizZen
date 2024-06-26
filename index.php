@@ -188,6 +188,19 @@
   <!-- typed js -->
   <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
   <!-- *Link script.js file -->
+  <!-- <script src="./quizData.js"></script> -->
+  <?php 
+    require_once "./connection.php";
+    $sql = "SELECT * FROM quiz_table";
+    $result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
+    $techarray = array();
+    while($row =mysqli_fetch_assoc($result)){
+      $techarray[] = $row;
+    }
+  ?>
+  <script>
+    const quizDB = <?php echo json_encode($techarray); ?>
+  </script>
   <script src="./script.js"></script>
 </body>
 
