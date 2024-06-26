@@ -1,115 +1,3 @@
-// Question Answer Array
-const quizDB = [
-  {
-    qid: "1",
-    question: "Q1: What is the fullform of HTML?",
-    a: "Hi Text Markup Law",
-    b: "Hello To My Land",
-    c: "HyperText Markup Language",
-    d: "Hypertext Markup Language",
-    ans: "ans4",
-  },
-  {
-    qid: "2",
-    question: "Q2: What is the fullform of CSS?",
-    a: "Cascading Style Sheets",
-    b: "Cascading Style Sheep",
-    c: "Cartoon Style Sheets",
-    d: "Cascading Super Sheets",
-    ans: "ans1",
-  },
-  {
-    qid: "3",
-    question: "Q3: What is the fullform of HTTP?",
-    a: "Hypertext Transfer Product",
-    b: "Hypertext Train Product",
-    c: "Hippo Transfer Product",
-    d: "Hypertext Transfer Protocol",
-    ans: "ans4",
-  },
-  {
-    qid: "4",
-    question: "Q4: What is the fullform of JS?",
-    a: "Java Script",
-    b: "Jana Script",
-    c: "Jabe Script",
-    d: "Jogaru Script",
-    ans: "ans1",
-  },
-  {
-    qid: "5",
-    question: "Q5: What is the fullform of IAS?",
-    a: "Indian Apple Shop",
-    b: "Indian Administritive Service",
-    c: "Idhar Aa Saale",
-    d: "Itna Accha Scooty",
-    ans: "ans2",
-  },
-  {
-    qid: "6",
-    question: "Q6: What is the fullform of IAS?",
-    a: "Indian Apple Shop",
-    b: "Indian Administritive Service",
-    c: "Idhar Aa Saale",
-    d: "Itna Accha Scooty",
-    ans: "ans2",
-  },
-  {
-    qid: "7",
-    question: "Q7: What is the fullform of IAS?",
-    a: "Indian Apple Shop",
-    b: "Indian Administritive Service",
-    c: "Idhar Aa Saale",
-    d: "Itna Accha Scooty",
-    ans: "ans2",
-  },
-  {
-    qid: "8",
-    question: "Q8: What is the fullform of IAS?",
-    a: "Indian Apple Shop",
-    b: "Indian Administritive Service",
-    c: "Idhar Aa Saale",
-    d: "Itna Accha Scooty",
-    ans: "ans2",
-  },
-  {
-    qid: "9",
-    question: "Q9: What is the fullform of IAS?",
-    a: "Indian Apple Shop",
-    b: "Indian Administritive Service",
-    c: "Idhar Aa Saale",
-    d: "Itna Accha Scooty",
-    ans: "ans2",
-  },
-  {
-    qid: "10",
-    question: "Q10: What is the fullform of IAS?",
-    a: "Indian Apple Shop",
-    b: "Indian Administritive Service",
-    c: "Idhar Aa Saale",
-    d: "Itna Accha Scooty",
-    ans: "ans2",
-  },
-  {
-    qid: "11",
-    question: "Q1: What is the fullform of HTML?",
-    a: "Hi Text Markup Law",
-    b: "Hello To My Land",
-    c: "HyperText Markup Language",
-    d: "Hypertext Markup Language",
-    ans: "ans4",
-  },
-  {
-    qid: "12",
-    question: "Q2: What is the fullform of CSS?",
-    a: "Cascading Style Sheets",
-    b: "Cascading Style Sheep",
-    c: "Cartoon Style Sheets",
-    d: "Cascading Super Sheets",
-    ans: "ans1",
-  },
-];
-
 //! Get all structured element & store it into a veriable
 const question = document.querySelector(".question");
 const option1 = document.querySelector("#option1");
@@ -146,7 +34,6 @@ let typedHeading = new Typed(".dbox-heading",{
   typeSpeed: 19
 })
 
-
 //! when start button click
 startButton.addEventListener("click", () => {
   // fullscreen
@@ -170,7 +57,8 @@ startButton.addEventListener("click", () => {
   // display quizbox
   quizBox.style.display = "grid";
   // sctollto top
-  window.scrollTo(0, 0);
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 
   // set left sidebar height
   // leftSidebar.style.height = "113vh";
@@ -527,3 +415,4 @@ y.addEventListener("change", myFunction2);
 setInterval(myFunction(x, y), 200);
 let specificWidth = [x, y];
 specificWidth.addEventListener("change", myFunction);
+
